@@ -1,7 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.menu_options{
+    float: right;
+    color: black;
+    transition: 0.5s;
+}
+
+.menu_option{
+    float: right;
+    font-size: 130%;
+    color: black;
+    text-decoration: none;
+    padding: 10px;    
+}
+
+.menu_option:hover{
+    color: rgb(88, 88, 88);
+    box-shadow: black inset;
 }
 
 .main_feed_container{
@@ -16,10 +38,34 @@
     width: 30%;
     margin-right: 3%;
     border: solid 1px black;
-    height: 100px;
     margin-top: 50px;
     border-radius: 10px;
     padding: 10px;
+    height: 80vh;
+    overflow: auto;
+    position: sticky;
+    top: calc(10vh + 50px);
+}
+
+nav{
+    display: inline-flex;
+    padding: 10px;
+    padding-left: 3%;
+    width: 100%;
+    padding-right: 3%;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    background-color: beige;
+    height: 10vh;
+}
+
+.profile_pic{
+    width: 7vh;
+    height: 7vh;
+    border: 1px solid black;
+    border-radius: 50%;
+    margin: auto;
 }
 
 .page{
@@ -27,3 +73,43 @@
     display: inline-flex;
 }
 
+header{
+    width: max-content;
+
+}
+
+h1{
+    white-space: nowrap;
+}
+
+
+
+.box_search input {
+    position: fixed;
+    transition: 1s;
+    width: 100px;
+    right: 60%;
+    border: none;
+    background-color: beige;
+}
+
+.box_search:hover input{
+    position: relative;
+    width: 250px;
+    border-radius: 10px;
+    display: block;
+    right: 0;
+    background-color: white;
+    border: 1px solid gray;
+}
+
+.box_search p{
+    position: relative;
+}
+
+.box_search:hover p{
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+    
+}
