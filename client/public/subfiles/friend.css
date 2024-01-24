@@ -5,5 +5,9 @@
 }
 
 .friend{
-    float: left;
+    display: inline-flex;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    background-color: rgb(245, 245, 245);
+    padding: 10px;
 }

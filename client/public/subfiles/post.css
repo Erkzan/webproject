@@ -7,20 +7,29 @@
 
 
 .post_container{
-    border: 1px solid black;
     display: inline-flex;
     margin-bottom: 15px;
     border-radius: 10px;
-    padding: 8px;
+    padding: 10px;
     text-align: left;
+    background-color: rgb(245, 245, 245);
 }
 
 .profile_pic{
-
+    
 }
 
 .footers{
     
+}
+
+.timestamp{
+    text-align: center;
+    margin-top: 10px;
+}
+
+.user{
+    font-weight: bold;
 }
 
 
