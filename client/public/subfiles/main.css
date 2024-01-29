@@ -1,10 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Chakra+Petch:wght@700&family=Moirai+One&display=swap');
 
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    color: #EEEEEE;
+}
+
+body{
+    background-color: #303841;
 }
 
 .menu_options{
@@ -26,7 +32,7 @@
     box-shadow: black inset;
 }
 
-.main_feed_container{
+section{
     width: 61%;
     float: left;
     margin-left: 3%;
@@ -34,15 +40,17 @@
     margin-right: 3%; 
 }
 
-.friend_container{
+
+aside{
     width: 30%;
     margin-right: 3%;
     border-radius: 10px;
-    padding: 0 10px 10px 10px;
+    
     height: 75vh;
     overflow: auto;
     position: sticky;
     top: 20vh;
+    margin-top: 10vh;
     float: left;
 }
 
@@ -55,14 +63,14 @@ nav{
     position: -webkit-sticky;
     position: sticky;
     top: 0;
-    background-color: beige;
+    background-color: #EA9215;
     height: 10vh;
 }
 
 .profile_pic{
     width: 50px;
     height: 50px;
-    border: 1px solid black;
+    border: 1px solid white;
     border-radius: 50%;
     margin: auto;
 }
@@ -79,6 +87,8 @@ header{
 
 h1{
     white-space: nowrap;
+    font-family: 'Moirai One', system-ui;
+    color: black;
 }
 
 
@@ -96,8 +106,11 @@ h1{
 
 .box_search:hover .s_input{
     width: 250px;
-    background: white;
+    background: #334756;
     border-radius: 10px;
+    padding-left: 10px;
+    font-size: 15px;
+    color: #EEEEEE;
 }
 
 .box_search p{
@@ -106,9 +119,15 @@ h1{
     left: 50%;
     transform: translate(-50%,-50%);
     transition: .2s;
+    font-family: 'Bungee', system-ui;
+    color: black;
 }
 
 .box_search:hover p{
     opacity: 0;
     z-index: -1;
+}
+
+a{
+    font-family: 'Bungee', sans-serif;
 }

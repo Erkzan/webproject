@@ -4,22 +4,16 @@
     box-sizing: border-box;
 }
 
-
-
 .post_container{
     display: inline-flex;
     margin-bottom: 15px;
     border-radius: 10px;
     padding: 10px;
     text-align: left;
-    background-color: rgb(245, 245, 245);
+    background-color: #3A4750;
 }
 
 .profile_pic{
-    
-}
-
-.footers{
     
 }
 
@@ -30,10 +24,13 @@
 
 .user{
     font-weight: bold;
+    font-family: 'Bungee';
 }
-
 
 .interaction{
-    
+    background-color: #303841;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    margin: 10px;
 }
-

@@ -1,0 +1,65 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.your_post_container{
+    display: inline-flex;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: left;
+    background-color: #3A4750;
+}
+
+.col2{
+    padding: 10px;
+    width: 85%;
+}
+.col-sm-1{
+    width: 15%;
+}
+
+.profile_info{
+    height: 50%;
+    margin-bottom: 15px;
+    display: inline-flex;
+    width: 100%;
+}
+
+.your_profile_pic{
+    max-width: 30%;
+}
+
+.your_profile_pic img{
+    width: 200px;
+    height: 200px;
+    border: solid white 1px;
+    border-radius: 50%;
+    margin:calc((100% - 200px) / 2);
+}
+
+.names{
+    width: 70%;
+}
+
+.your_bio{
+    height: calc(50% - 15px);
+    width: 100%;
+    background-color: #3A4750;
+    border: none;
+    border-radius: 10px;
+    resize: none;
+    padding: 10px;
+}
+
+.names input{
+    width: 80%;
+    height: 20%;
+    margin: 10%;
+    border-radius: 10px;
+    border: none;
+    background-color: #3A4750;
+    padding-left: 10px;
+}
