@@ -8,6 +8,18 @@
     display: inline-flex;
     margin-bottom: 15px;
     border-radius: 10px;
-    background-color: #3A4750;
+    background-color: #33CCCC;
     padding: 10px;
+}
+
+.friend .user{
+    color: white;
+}
+
+.friend .profile_pic{
+    border: white solid 1px;
+}
+
+.friend p{
+    color: #f8f8f8;
 }

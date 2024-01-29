@@ -6,11 +6,11 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-    color: #EEEEEE;
+    color: black;
 }
 
 body{
-    background-color: #303841;
+    background-color: white;
 }
 
 .menu_options{
@@ -22,7 +22,7 @@ body{
 .menu_option{
     float: right;
     font-size: 130%;
-    color: black;
+    color: white;
     text-decoration: none;
     padding: 10px;    
 }
@@ -63,14 +63,14 @@ nav{
     position: -webkit-sticky;
     position: sticky;
     top: 0;
-    background-color: #EA9215;
+    background-color: #33CCCC;
     height: 10vh;
 }
 
 .profile_pic{
     width: 50px;
     height: 50px;
-    border: 1px solid white;
+    border: 1px solid #33CCCC;
     border-radius: 50%;
     margin: auto;
 }
@@ -85,12 +85,9 @@ header{
 
 }
 
-h1{
-    white-space: nowrap;
-    font-family: 'Moirai One', system-ui;
-    color: black;
+header img{
+    width: 20%;
 }
-
 
 
 .box_search{
@@ -106,11 +103,11 @@ h1{
 
 .box_search:hover .s_input{
     width: 250px;
-    background: #334756;
+    background: white;
     border-radius: 10px;
     padding-left: 10px;
     font-size: 15px;
-    color: #EEEEEE;
+    color: black;
 }
 
 .box_search p{
@@ -120,7 +117,7 @@ h1{
     transform: translate(-50%,-50%);
     transition: .2s;
     font-family: 'Bungee', system-ui;
-    color: black;
+    color: white;
 }
 
 .box_search:hover p{
