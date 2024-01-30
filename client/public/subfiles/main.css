@@ -28,8 +28,8 @@ body{
 }
 
 .menu_option:hover{
-    color: rgb(88, 88, 88);
-    box-shadow: black inset;
+    color:  #fff5e8;
+    box-shadow:  #f8f8f8;
 }
 
 section{
@@ -39,7 +39,6 @@ section{
     margin-top: 10vh;
     margin-right: 3%; 
 }
-
 
 aside{
     width: 30%;
@@ -63,14 +62,14 @@ nav{
     position: -webkit-sticky;
     position: sticky;
     top: 0;
-    background-color: #33CCCC;
+    background-color: #ddcfbf;
     height: 10vh;
 }
 
 .profile_pic{
     width: 50px;
     height: 50px;
-    border: 1px solid #33CCCC;
+    border: 1px solid #ddcfbf;
     border-radius: 50%;
     margin: auto;
 }

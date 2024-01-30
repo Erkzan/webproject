@@ -13,10 +13,6 @@
     background-color: #f8f8f8;
 }
 
-.profile_pic{
-    
-}
-
 .timestamp{
     text-align: center;
     margin-top: 10px;
@@ -25,11 +21,11 @@
 .user{
     font-weight: bold;
     font-family: 'Bungee';
-    color: #33CCCC;
+    color: #c6bba7;
 }
 
 .interaction{
-    background-color: #303841;
+    background-color:#f8f8f8;
     border: none;
     height: 40px;
     margin: 0 7%;
