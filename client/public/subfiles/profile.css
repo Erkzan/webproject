@@ -10,7 +10,7 @@
     border-radius: 10px;
     padding: 10px;
     text-align: left;
-    background-color: #ffffff;
+    background-color: #f8f8f8;
 }
 
 .col2{
@@ -47,7 +47,7 @@
 .your_bio{
     height: calc(50% - 15px);
     width: 100%;
-    background-color: #3A4750;
+    background-color: #f8f8f8;
     border: none;
     border-radius: 10px;
     resize: none;
@@ -60,6 +60,6 @@
     margin: 10%;
     border-radius: 10px;
     border: none;
-    background-color: #3A4750;
+    background-color: #f8f8f8;;
     padding-left: 10px;
 }
