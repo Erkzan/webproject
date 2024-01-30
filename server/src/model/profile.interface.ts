@@ -6,6 +6,5 @@ export interface Profile{
     bio : String;
     posts : String[];
     friends : String[];
-    profilePicture : String; // Temporary
-    
+    profilePicture : String; // Temporary    
 }
