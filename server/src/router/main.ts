@@ -24,3 +24,8 @@ mainRouter.get("/search", (req, res) => {
     res.sendFile(path.join(publicPath, 'search.html'));
 });
 
+mainRouter.get("/login", (req, res) => {
+    res.sendFile(path.join(publicPath, 'login.html'));
+});
+
+

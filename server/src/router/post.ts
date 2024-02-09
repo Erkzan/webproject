@@ -31,7 +31,5 @@ postRouter.get("/all", (req, res) => {
     res.send(postService.getPosts());
 });
 
-postRouter.get("/", (req, res) => {
-    res.sendFile(path.join(publicPath, 'index.html'));
-});
+
 
