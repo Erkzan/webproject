@@ -10,6 +10,7 @@ export const profileRouter = express.Router();
 
 
 const publicPath = path.resolve(__dirname, '../../../client/public');
+const dbPath = path.resolve(__dirname,'../../DB/users.json');
 
 profileRouter.use(express.static(publicPath));
 
@@ -28,7 +29,7 @@ profileRouter.post("/login", (req, res) => {
     const password = req.body.password;
 
     const fs = require('fs');
-    const users: User[] = JSON.parse(fs.readFileSync('../../DB/users.json'));
+    const users: User[] = JSON.parse(fs.readFileSync(dbPath));
 
     let foundUser = users.find((user: { username: string; password: string; }) => {
         return user.username === username && user.password === password;
@@ -38,7 +39,9 @@ profileRouter.post("/login", (req, res) => {
     
         const token = jwt.sign({ username: foundUser.username }, "bögbögbögbögbögbögbög", { expiresIn: '1h' });
 
-        res.status(200).json({ token: token });
+        res.cookie("token", token, {httpOnly:true, maxAge:600*1000, sameSite:"lax"});
+        res.redirect("/profile");
+        
     } else {
         res.status(401).json({ message: "Invalid credentials" });
     }
@@ -48,8 +51,10 @@ profileRouter.post("/reg", (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
 
+    console.log(username + "     " + password);
+
     const fs = require('fs');
-    let users: User[] = JSON.parse(fs.readFileSync('../../../server/DB/users.json'));
+    let users: User[] = JSON.parse(fs.readFileSync(dbPath));
 
     const existingUser = users.find(user => user.username === username);
     if (existingUser) {
@@ -58,7 +63,9 @@ profileRouter.post("/reg", (req, res) => {
 
     users.push({ username: username, password: password });
 
-    fs.writeFileSync('../../server/DB/users.json', JSON.stringify(users));
+    console.log(users);
+
+    fs.writeFileSync(dbPath, JSON.stringify(users));
 
     res.status(201).json({ message: "User registered successfully" });
 });
