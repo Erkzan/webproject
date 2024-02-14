@@ -1,6 +1,5 @@
 import { Profile } from "../model/profile.interface";
 import path from "path";
-import jwt from "jsonwebtoken";
 
 
 const publicPath = path.resolve(__dirname, '../../../client/public');
