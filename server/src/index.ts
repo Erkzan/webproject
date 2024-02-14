@@ -2,7 +2,7 @@ import { app } from "./start";
 
 
 const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = "mongodb+srv://Y:<Chalmers123>@y.y9rfxte.mongodb.net/?retryWrites=true&w=majority";
+const uri = "mongodb+srv://Y:Chalmers123@y.y9rfxte.mongodb.net/?retryWrites=true&w=majority";
 
 
 const PORT : number = 8080;
@@ -37,13 +37,13 @@ async function run() {
 
 
 
-
+/*
     app.use(function(req, res, next){
 
         next();
     });
 
-
+*/
 
     app.listen(PORT, () => {
         console.log(`listening on port ${PORT}`);
