@@ -13,7 +13,7 @@ import cors from "cors";
 export const app = express();
 require("dotenv").config();
 
-export const publicPath = path.resolve(__dirname, '../../client/public');
+export const publicPath = path.resolve(__dirname, '../../client/src');
 
 app.use(express.json());
 app.use(express.static(publicPath));
@@ -22,9 +22,9 @@ app.use(bodyParser());
 app.use(cors());
 
 
-app.use("/", mainRouter);
-app.use("/posts", postRouter);
-app.use("/profile", profileRouter);
+//app.use("/", mainRouter);
+//app.use("/posts", postRouter);
+//app.use("/profile", profileRouter);
 
 
 

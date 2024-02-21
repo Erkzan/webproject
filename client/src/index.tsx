@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import Friend from "./components/Friend/Friend";
-import Navbar from "./components/Navbar/Navbar";
-import Post from "./components/Post/Post";
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import HomePage from "./pages/HomePage";
+
 import "./index.css";
 
 const root = ReactDOM.createRoot(
@@ -10,32 +10,10 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <Navbar />
-    <div className="page">
-      <section className="post-feed">
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-      </section>
-      <aside className="friend-feed">
-        <Friend />
-        <Friend />
-        <Friend />
-        <Friend />
-        <Friend />
-        <Friend />
-        <Friend />
-        <Friend />
-        <Friend />
-      </aside>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
