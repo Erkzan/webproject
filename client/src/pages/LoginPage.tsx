@@ -18,6 +18,8 @@ function LoginPage() {
       console.log("sending login details")
       const response = await fetch("http://localhost:8080/profile/login", {
         method: "POST",
+        mode: "cors",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
@@ -27,6 +29,8 @@ function LoginPage() {
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
+
+      console.log(await response.text()); 
 
       // Handle success response as needed
     } catch (error) {
