@@ -14,16 +14,16 @@ function NavBar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Link className="link" href="#home">
+            <Nav.Link className="link" href="/">
               Home
             </Nav.Link>
-            <Nav.Link className="link" href="#search">
+            <Nav.Link className="link" href="/search">
               Search
             </Nav.Link>
-            <Nav.Link className="link" href="#friends">
+            <Nav.Link className="link" href="/friends">
               Friends
             </Nav.Link>
-            <Nav.Link className="link" href="#profile">
+            <Nav.Link className="link" href="/profile">
               Profile
             </Nav.Link>
           </Nav>

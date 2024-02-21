@@ -16,7 +16,6 @@ require("dotenv").config();
 export const publicPath = path.resolve(__dirname, '../../client/src');
 
 app.use(express.json());
-app.use(express.static(publicPath));
 app.use(cookieParser());
 app.use(bodyParser());
 app.use(cors());
@@ -25,6 +24,3 @@ app.use(cors());
 //app.use("/", mainRouter);
 //app.use("/posts", postRouter);
 //app.use("/profile", profileRouter);
-
-
-
