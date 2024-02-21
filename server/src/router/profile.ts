@@ -2,8 +2,8 @@ import express, { Request, Response } from "express";
 import { ProfileService } from "../service/profile";
 import { Profile } from "../model/profile.interface";
 import path from "path";
+import { userpassModel } from "../../db/userpass.db";
 import jwt from "jsonwebtoken";
-
 
 
 export const profileRouter = express.Router();
@@ -19,21 +19,14 @@ profileRouter.get("/login", (req, res) => {
     res.sendFile(path.join(publicPath, 'login.html'));
 });
 
-interface User {
-    username: string;
-    password: string;
-}
 
-profileRouter.post("/login", (req, res) => {
-    const username = req.body.username;
-    const password = req.body.password;
+profileRouter.post("/login", async(req, res) => {
 
-    const fs = require('fs');
-    const users: User[] = JSON.parse(fs.readFileSync(dbPath));
-
-    let foundUser = users.find((user: { username: string; password: string; }) => {
-        return user.username === username && user.password === password;
+    let foundUser = await userpassModel.findOne({
+        username:req.body.username, 
+        password:req.body.password
     });
+    
 
     if (foundUser) {
     
@@ -47,27 +40,32 @@ profileRouter.post("/login", (req, res) => {
     }
 });
 
-profileRouter.post("/reg", (req, res) => {
-    const username = req.body.username;
-    const password = req.body.password;
 
-    console.log(username + "     " + password);
+profileRouter.get("/register", (req, res) => {
+    res.sendFile(path.join(publicPath, 'register.html'));
+});
 
-    const fs = require('fs');
-    let users: User[] = JSON.parse(fs.readFileSync(dbPath));
 
-    const existingUser = users.find(user => user.username === username);
+profileRouter.post("/register", async(req, res) => {
+    
+    let existingUser = await userpassModel.findOne({
+        username: req.body.username
+    });
+    
     if (existingUser) {
         return res.status(400).json({ message: "Username already exists" });
     }
 
-    users.push({ username: username, password: password });
+    await userpassModel.create({
+        username:req.body.username, 
+        password:req.body.password
+    });
 
-    console.log(users);
 
-    fs.writeFileSync(dbPath, JSON.stringify(users));
+    const token = jwt.sign({ username: req.body.username }, "bögbögbögbögbögbögbög", { expiresIn: '1h' });
 
-    res.status(201).json({ message: "User registered successfully" });
+    res.cookie("token", token, {httpOnly:true, maxAge:600*1000, sameSite:"lax"});
+    res.redirect("/profile");
 });
 
 
