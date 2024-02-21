@@ -1,11 +1,13 @@
-import React from "react";
-import Navbar from "../components/Navbar/Navbar";
+import Friend from "../components/Friend/Friend";
+import NavBar from "../components/Navbar/Navbar";
 import Post from "../components/Post/Post";
 
 const Friends = () => {
     return (
-     <h1>friends</h1>
-    )
-}
+        <>
+            <NavBar/>
+        </>
+    );
+};
 
 export default Friends;

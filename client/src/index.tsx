@@ -7,6 +7,7 @@ import HomePage from "./pages/HomePage";
 import Profile from "./pages/Profile";
 import Search from "./pages/Search";
 import Friends from "./pages/Friends";
+import LoginPage from "./pages/LoginPage"
 
 // CSS
 import "./index.css";
@@ -24,6 +25,8 @@ root.render(
         <Route path="/profile" element={<Profile />} />
         <Route path="/search" element={<Search />} />
         <Route path="/friends" element={<Friends />} />
+
+        <Route path="/login" element={<LoginPage />} />
 
       </Routes>
     </BrowserRouter>
