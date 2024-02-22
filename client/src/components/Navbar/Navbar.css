@@ -17,3 +17,38 @@
 .link:hover {
   color: lightblue;
 }
+
+.box_search{
+  position:relative;
+}
+
+.s_input{
+  width: 60px;
+  border: none;
+  background: none;
+  transition: .5s;
+}
+
+.box_search:hover .s_input{
+  width: 250px;
+  background: white;
+  border-radius: 10px;
+  padding-left: 10px;
+  font-size: 15px;
+  color: black;
+}
+
+.box_search p{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  transition: .2s;
+  font-family: 'Bungee', system-ui;
+  color: #eee;
+}
+
+.box_search:hover p{
+  opacity: 0;
+  z-index: -1;
+}

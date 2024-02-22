@@ -16,7 +16,7 @@ function Post() {
           architecto quia?
         </div>
         <div className="post-pic"></div>
-        <footer className="container-fluid">
+        <footer className="">
           <button className="col interaction like_button"></button>
           <button className="col interaction dislike_button"></button>
           <button className="col interaction comment_button"></button>

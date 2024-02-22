@@ -3,33 +3,27 @@ import NavBar from "../components/Navbar/Navbar";
 import Post from "../components/Post/Post";
 
 const HomePage = () => {
+
+  let posts = [];
+  let myFriends = [];
+
+  for(let i = 0; i < 10; i++){
+    posts.push(<Post />)
+  }
+
+  for(let i = 0; i < 7; i++){
+    myFriends.push(<Friend />)
+  }
+
   return (
     <>
       <NavBar />
       <div className="page">
         <section className="post-feed">
-          <Post />
-          <Post />
-          <Post />
-          <Post />
-          <Post />
-          <Post />
-          <Post />
-          <Post />
-          <Post />
-          <Post />
-          <Post />
+          {posts}
         </section>
         <aside className="friend-feed">
-          <Friend />
-          <Friend />
-          <Friend />
-          <Friend />
-          <Friend />
-          <Friend />
-          <Friend />
-          <Friend />
-          <Friend />
+          {myFriends}
         </aside>
       </div>
     </>

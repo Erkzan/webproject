@@ -26,19 +26,31 @@
   padding: 10px;
 }
 
+.your-posts .content-container{
+  margin-left: 10px;
+}
+
 .user {
   font-weight: bold;
   font-family: "Bungee";
   color: #000000;
 }
 
+footer{
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin-left: 10%;
+}
+
 .interaction {
   background-color: #f8f8f8;
   border: none;
   height: 40px;
-  width: 40px;
-  margin: 0 7%;
+  max-width: 40px;
 }
+
+
 
 .like_button {
   background: transparent url(interaction_pictures/like.png) no-repeat center;
