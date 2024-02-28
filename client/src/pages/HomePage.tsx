@@ -1,6 +1,7 @@
 import Friend from "../components/Friend/Friend";
 import NavBar from "../components/Navbar/Navbar";
 import Post from "../components/Post/Post";
+import Modal from "../components/Modal/Modal";
 
 const HomePage = () => {
 
@@ -19,11 +20,13 @@ const HomePage = () => {
     <>
       <NavBar />
       <div className="page">
+      
         <section className="post-feed">
           {posts}
         </section>
         <aside className="friend-feed">
           {myFriends}
+          <Modal/>
         </aside>
       </div>
     </>

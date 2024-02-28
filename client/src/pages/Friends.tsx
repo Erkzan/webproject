@@ -5,24 +5,20 @@ import Friendprofiles from "../components/Friendprofiles/Friendprofiles";
 import "./Friends.css";
 
 const Friends = () => {
+
+    let myFriends = [];
+
+    for(let i = 0; i < 12; i++){
+        myFriends.push( <Friendprofiles/>)
+    }
+
     return (
         <>
             <NavBar/>
             <header></header>
             <div className="page">
                 <div className="row">
-                    <Friendprofiles/>
-                    <Friendprofiles/>
-                    <Friendprofiles/>
-                    <Friendprofiles/>
-                    <Friendprofiles/>
-                    <Friendprofiles/>
-                    <Friendprofiles/>
-                    <Friendprofiles/>
-                    <Friendprofiles/>
-                    <Friendprofiles/>
-                    <Friendprofiles/>
-                    <Friendprofiles/>
+                    {myFriends}
                 </div>
             </div>
         </>
