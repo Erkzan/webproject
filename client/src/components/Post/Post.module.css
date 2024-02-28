@@ -1,4 +1,4 @@
-.post-container {
+.post_container {
   display: inline-flex;
   margin-bottom: 15px;
   border-radius: 10px;
@@ -7,7 +7,7 @@
   background-color: #f8f8f8;
 }
 
-.post-container .profile-pic {
+.profile_pic {
   border: solid 1px black;
   border-radius: 50%;
   width: 50px;
@@ -22,11 +22,14 @@
   color: #000000;
 }
 
-.content-container {
+.post_pic {
+}
+
+.content_container {
   padding: 10px;
 }
 
-.your-posts .content-container{
+.content_container {
   margin-left: 10px;
 }
 
@@ -36,7 +39,7 @@
   color: #000000;
 }
 
-footer{
+footer {
   display: flex;
   justify-content: space-between;
   width: 80%;
@@ -49,8 +52,6 @@ footer{
   height: 40px;
   max-width: 40px;
 }
-
-
 
 .like_button {
   background: transparent url(interaction_pictures/like.png) no-repeat center;

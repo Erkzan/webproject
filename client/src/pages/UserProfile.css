@@ -1,17 +1,17 @@
-.profile-page {
+.userProfile-page {
   margin-top: 10vh;
   padding-top: 10vh;
   height: 90vh;
 }
 
-.profile-container {
+.userProfile-container {
   width: 61%;
   float: left;
   margin-left: 3%;
   margin-right: 3%;
 }
 
-.profile-info {
+.userProfile-info {
   height: 50%;
   margin-bottom: 15px;
   display: inline-flex;
@@ -20,12 +20,12 @@
   border-radius: 10px;
 }
 
-.your-profile-pic {
+.user-profile-pic {
   margin: auto;
   max-width: 30%;
 }
 
-.your-profile-pic img {
+.user-profile-pic img {
   width: 200px;
   height: 200px;
   border: solid black 1px;
@@ -57,14 +57,14 @@
   padding: 10px;
 }
 
-.your-posts {
+.user_posts {
   width: 30%;
   margin-right: 3%;
   height: calc(50% + 32vh);
   overflow: auto;
 }
 
-.profile-page {
+.userProfile-page {
   margin-top: 10vh;
   padding-top: 10vh;
 }

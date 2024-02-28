@@ -1,4 +1,4 @@
-import Friend from "../components/Friend/Friend";
+import Profile from "../components/Profile/Profile";
 import NavBar from "../components/Navbar/Navbar";
 import Post from "../components/Post/Post";
 
@@ -12,7 +12,7 @@ const HomePage = () => {
   }
 
   for(let i = 0; i < 7; i++){
-    myFriends.push(<Friend />)
+    myFriends.push(<Profile />)
   }
 
   return (

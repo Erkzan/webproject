@@ -1,12 +1,24 @@
-import React from "react";
+import Profile from "../components/Profile/Profile";
 import Navbar from "../components/Navbar/Navbar";
-import Post from "../components/Post/Post";
-import Friend from "../components/Friend/Friend";
+
+import classes from "./Search.module.css";
 
 const Search = () => {
-    return (
-     <h1>search</h1>
-    )
-}
+  return (
+    <>
+      <Navbar />
+
+      <div className={classes.container}>
+        <Profile />
+        <Profile />
+        <Profile />
+        <Profile />
+        <Profile />
+        <Profile />
+        <Profile />
+      </div>
+    </>
+  );
+};
 
 export default Search;
