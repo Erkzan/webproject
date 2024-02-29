@@ -1,16 +1,20 @@
 .button {
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 40px;
+    border: 1px solid #000000; 
     border-radius: 50%;
-    background-color: rgb(205, 205, 205);
-    font-size: 50px;
+    background-color: rgb(255, 255, 255);
+    font-size: 55px;
+    font-weight: 10;
     text-align: center;
-    line-height: 88%;
-    color: white;
+    line-height: 50%;
+    color: rgb(0, 0, 0);
+    transition: transform 2s;
 }
 
 .button:hover{
-    background-color: #e2e2e2;
+    transform: rotate(180deg);
+    border: 1.5px solid #000000; 
 }
 
 .head {
@@ -21,14 +25,16 @@
     font-weight: bold;
     font-family: "Bungee";
     color: #000000;
+    font-size: 200%;
     margin-left: auto;
+    margin-top: 5%;
 }
 
-.close {
-    margin: auto;
+.close ,.post {
+    margin: 0 10px; 
     height: 30px;
     width: 130px;
-    border: 1px solid #000000; /* Set border style, width, and color */
+    border: 1px solid #000000; 
     border-radius: 30px;
     background-color: rgb(255, 255, 255);
     font-size: 15px;
@@ -37,28 +43,39 @@
     color: rgb(0, 0, 0);
 }
 
-.post{
-    margin: auto;
-    height: 30px;
-    width: 130px;
-    border: 1px solid #000000; /* Set border style, width, and color */
-    border-radius: 30px;
-    background-color: rgb(255, 255, 255);
-    font-size: 15px;
-    line-height: 25px;
-    text-align: center;
-    color: rgb(0, 0, 0);
+.close:hover , .post:hover{
+    border: 1.5px solid #c3c3c3; 
 }
+
 
 .foot{
     border: 0;
+    display: flex; 
+    justify-content: center; 
 }
 
 .text{
+    margin-top: 0%;
+    margin-bottom: 5%;
+    margin-right: 0%;
     background-color: rgb(239, 238, 238);
-    width: 90%;
-    height: 100px;
-    border: 0;
-    margin-left: 20px;
+    width: 70%;
+    height: 200px;
+    border-color: rgb(239, 238, 238);
+    border-radius: 10px;
+    border-width: 10px;
+    margin-left: 5%;
+    font-size: large;
+    color: black;
+}
+
+.profile{
+    border: solid 1px black;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    margin-left: 5%;
+    float: left;
+    margin-right: 0%;
 }
 
