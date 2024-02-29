@@ -12,6 +12,7 @@
 
 .link {
   color: #eee;
+  margin-top: 3.7%;
 }
 
 .link:hover {
@@ -20,6 +21,7 @@
 
 .box_search{
   position:relative;
+  margin-top: auto;
 }
 
 .s_input{
