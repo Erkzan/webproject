@@ -20,4 +20,4 @@ const postSchema : Schema = new Schema({
 
 
 
-export const postModel = conn.model<Post>("posts", postSchema);
+export const commentModel = conn.model<Post>("comments", postSchema);

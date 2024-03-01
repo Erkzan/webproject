@@ -1,3 +1,5 @@
+import { ObjectId } from "mongodb";
+
 export interface Post{
     id :  String;
     message : String;
@@ -6,7 +8,6 @@ export interface Post{
     authorId : String;
     likes : number;
     dislikes : number;
-    comments : String[];
-    isComment : boolean;
+    commentUnder : ObjectId;
     shares : number;
 } 

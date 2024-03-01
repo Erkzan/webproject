@@ -68,14 +68,6 @@ profileRouter.post("/register", async (req, res) => {
       { expiresIn: "1h" }
     );
 
-    res.cookie("token", token, {
-      httpOnly: true,
-      maxAge: 600 * 1000,
-      sameSite: "none",
-      secure: true,
-      //domain: ".localhost:8080"
-    });
-
     //set profile
     await profileModel.create({
       username: req.body.username,
@@ -85,6 +77,15 @@ profileRouter.post("/register", async (req, res) => {
       friends: [],
       bio: "",
     });
+
+    res.cookie("token", token, {
+      httpOnly: true,
+      maxAge: 600 * 1000,
+      sameSite: "none",
+      secure: true,
+      //domain: ".localhost:8080"
+    });
+
 
     res.send("hejsan");
   }
