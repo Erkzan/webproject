@@ -30,8 +30,13 @@ postRouter.post("/addPost", async (req, res) => {
   res.send("Postat");
 });
 
-postRouter.post("/addComment", (req, res) => {
+postRouter.post("/addComment", async(req, res) => {
+  let data = await commentModel.find({
+    commentUnder: req.body.commentUnder
+  });
 
+
+  res.send(data);
 });
 
 postRouter.post("/getAll", async (req, res) => {
