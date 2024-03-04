@@ -126,4 +126,15 @@ profileRouter.post("/logout", (req, res) => {
   res.send("error");
 });
 
+profileRouter.post("/getNameById", async (req, res) => {
+  console.log(req.body.id);
+
+  let profile = await profileModel.findById(req.body.id);
+  if (profile) {
+    res.send({ name: profile.name });
+  } else {
+    res.sendStatus(404);
+  }
+});
+
 export default profileRouter;

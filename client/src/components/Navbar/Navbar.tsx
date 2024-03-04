@@ -124,12 +124,36 @@ function NavBar() {
             {/* Conditional Rendering for Login/My Profile and Logout */}
             {isLoggedIn ? (
               <>
-                <Nav.Link className="link" href={"/MyProfile/" + username}>
-                  My Profile
-                </Nav.Link>
-                <Nav.Link className="link" onClick={handleLogout}>
-                  Logout
-                </Nav.Link>
+                <div className="btn-group">
+                  <Nav.Link
+                    className="link btn btn-secondary"
+                    href={"/UserProfile/" + username}
+                  >
+                    My Profile
+                  </Nav.Link>
+                  <button
+                    type="button"
+                    className="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    data-bs-toggle="dropdown"
+                  >
+                    <span className="sr-only"></span>
+                  </button>
+
+                  <ul className="dropdown-menu">
+                    <li>
+                      <button
+                        className="link dropdown-item"
+                        onClick={handleLogout}
+                        data-toggle="dropdown"
+                      >
+                        Logout
+                      </button>
+                    </li>
+                  </ul>
+                </div>
               </>
             ) : (
               <Nav.Link className="link" href="/login">

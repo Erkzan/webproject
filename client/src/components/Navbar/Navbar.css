@@ -19,19 +19,19 @@
   color: lightblue;
 }
 
-.box_search{
-  position:relative;
+.box_search {
+  position: relative;
   margin-top: auto;
 }
 
-.s_input{
+.s_input {
   width: 60px;
   border: none;
   background: none;
-  transition: .5s;
+  transition: 0.5s;
 }
 
-.box_search:hover .s_input{
+.box_search:hover .s_input {
   width: 250px;
   background: white;
   border-radius: 10px;
@@ -40,17 +40,21 @@
   color: black;
 }
 
-.box_search p{
+.box_search p {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
-  transition: .2s;
-  font-family: 'Bungee', system-ui;
+  transform: translate(-50%, -50%);
+  transition: 0.2s;
+  font-family: "Bungee", system-ui;
   color: #eee;
 }
 
-.box_search:hover p{
+.box_search:hover p {
   opacity: 0;
   z-index: -1;
+}
+
+.dropdown-item {
+  background-color: red;
 }

@@ -5,6 +5,7 @@
   padding: 10px;
   text-align: left;
   background-color: #f8f8f8;
+  min-width: 100%;
 }
 
 .profile_pic {

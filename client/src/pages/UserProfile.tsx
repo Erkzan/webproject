@@ -13,7 +13,7 @@ const UserProfile = () => {
   let myPosts = [];
 
   for (let i = 0; i < 5; i++) {
-    myPosts.push(<Post />);
+    myPosts.push(<Post postData="emil"/>);
   }
   return (
     <>
