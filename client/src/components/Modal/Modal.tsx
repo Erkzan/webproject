@@ -28,7 +28,7 @@ function Modal() {
             Close
           </div>
           <div className="post" onClick={handleClose}>
-            Save Changes
+            Add Post
           </div>
         </Modall.Footer>
       </Modall>

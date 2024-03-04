@@ -17,7 +17,7 @@ function AddComment() {
       <div className="Cbuttonhover"></div>
       <Modall show={show} onHide={handleClose} size="xl">
         <Modall.Header className="Chead">
-          <Modall.Title className="Cheadtext">New Post</Modall.Title>
+          <Modall.Title className="Cheadtext">Add Comment</Modall.Title>
         </Modall.Header>
         <Modall.Body>
                 <div className="Cprofile"></div>
@@ -28,7 +28,7 @@ function AddComment() {
             Close
           </div>
           <div className="Cpost" onClick={handleClose}>
-            Save Changes
+            Add Comment
           </div>
         </Modall.Footer>
       </Modall>

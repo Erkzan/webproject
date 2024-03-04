@@ -21,7 +21,7 @@ interface CommentsModalProps {
       <Modall show={show} onHide={handleClose} size="xl">
         <Modall.Header className="head">
         </Modall.Header>
-        <Modall.Body>
+        <Modall.Body className="TheBody">
                 <div className="container">
                 <div className="left-div">
                     <div className="profile-pic"></div>
@@ -48,6 +48,7 @@ interface CommentsModalProps {
           </div>
         </Modall.Footer>
       </Modall>
+
     </>
   );
 }

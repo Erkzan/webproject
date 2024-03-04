@@ -75,3 +75,7 @@
     height: 5em;
     width: 100%;
 }
+
+.blur {
+    filter: blur(5px); /* Adjust the blur radius as needed */
+}
