@@ -4,6 +4,27 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import "./Navbar.css";
 
+async function getUsername() {
+  console.log("sending cookie details");
+  
+      const response = await fetch("http://localhost:8080/profile/checkLogin", {
+        method: "POST",
+        mode: "cors",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      let txtResponse = await response.text()
+      console.log(txtResponse);
+}
+
 function NavBar() {
   const handleMouseEvent = (e: React.MouseEvent<HTMLInputElement>) => {
     const inputElement = e.currentTarget as HTMLInputElement;
