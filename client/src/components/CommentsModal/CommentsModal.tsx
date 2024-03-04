@@ -9,6 +9,11 @@ interface CommentsModalProps {
   }
   
   const CommentsModal: React.FC<CommentsModalProps> = ({ show, handleClose }) => {
+    let Comment = [];
+
+    for(let i = 0; i < 12; i++){
+        Comment.push( <Comments/>)
+    }
 
   return (
     <>
@@ -30,15 +35,7 @@ interface CommentsModalProps {
                 </div>
                 </div>
             </div>
-            <Comments/>
-            <Comments/>
-            <Comments/>
-            <Comments/>
-            <Comments/>
-            <Comments/>
-            <Comments/>
-            <Comments/>
-            <Comments/>
+              {Comment}
             <div className="space"></div>
         </Modall.Body>
         <Modall.Footer className="foots">

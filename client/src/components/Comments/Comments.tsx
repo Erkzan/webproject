@@ -10,7 +10,7 @@ function Comments() {
        </div>
       <div className="right-divs">
         <div className="usernames">Erik Karlsson</div>
-        <div className="texts">blablabla</div>
+        <div className="texts"></div>
       </div>
     </div>
     </>
