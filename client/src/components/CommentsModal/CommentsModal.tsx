@@ -1,6 +1,7 @@
 import Modall from 'react-bootstrap/Modal';
 import "./CommentsModal.css";
 import Comments from "../Comments/Comments";
+import AddC from "../AddComment/AddComment";
 
 
 interface CommentsModalProps {
@@ -42,8 +43,8 @@ interface CommentsModalProps {
           <div className="close" onClick={handleClose}>
             Close
           </div>
-          <div className="post" onClick={handleClose}>
-            Add Comment
+          <div>
+            <AddC/>
           </div>
         </Modall.Footer>
       </Modall>
