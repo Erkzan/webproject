@@ -26,7 +26,7 @@
     font-family: "Bungee";
     color: #000000;
     font-size: 200%;
-    margin-left: auto;
+    margin: auto;
     margin-top: 5%;
 }
 
@@ -74,8 +74,10 @@
     border-radius: 50%;
     width: 70px;
     height: 70px;
-    margin-left: 5%;
+    margin-left: 10%;
     float: left;
     margin-right: 0%;
 }
+
+
 
