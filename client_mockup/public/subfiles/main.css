@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Chakra+Petch:wght@700&family=Moirai+One&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    color: black;
+}
+
+body{
+    background-color: white;
+}
+
+.menu_options{
+    float: right;
+    color: black;
+    transition: 0.5s;
+}
+
+.menu_option{
+    float: right;
+    font-size: 130%;
+    color: white;
+    text-decoration: none;
+    padding: 10px;    
+}
+
+.menu_option:hover{
+    color:  #fff5e8;
+    box-shadow:  #f8f8f8;
+}
+
+section{
+    width: 61%;
+    float: left;
+    margin-left: 3%;
+    margin-top: 10vh;
+    margin-right: 3%; 
+}
+
+aside{
+    width: 30%;
+    margin-right: 3%;
+    border-radius: 10px;
+    
+    height: 75vh;
+    overflow: auto;
+    position: sticky;
+    top: 20vh;
+    margin-top: 10vh;
+    float: left;
+}
+
+nav{
+    display: inline-flex;
+    padding: 10px;
+    padding-left: 3%;
+    width: 100%;
+    padding-right: 3%;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    background-color: #ddcfbf;
+    height: 10vh;
+}
+
+.profile_pic{
+    width: 50px;
+    height: 50px;
+    border: 1px solid #ddcfbf;
+    border-radius: 50%;
+    margin: auto;
+}
+
+.page{
+    width: 100%;
+    display: inline-flex;
+}
+
+header{
+    width: max-content;
+
+}
+
+header img{
+    width: 20%;
+    
+}
+
+
+.box_search{
+    position:relative;
+}
+
+.s_input{
+    width: 100px;
+    background: none;
+    border: none;
+    transition: .5s;
+}
+
+.box_search:hover .s_input{
+    width: 250px;
+    background: white;
+    border-radius: 10px;
+    padding-left: 10px;
+    font-size: 15px;
+    color: black;
+}
+
+.box_search p{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    transition: .2s;
+    font-family: 'Bungee', system-ui;
+    color: white;
+}
+
+.box_search:hover p{
+    opacity: 0;
+    z-index: -1;
+}
+
+a{
+    font-family: 'Bungee', sans-serif;
+}

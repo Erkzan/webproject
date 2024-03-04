@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.friend{
+    display: inline-flex;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    background-color: #ddcfbf;
+    padding: 10px;
+}
+
+.friend .user{
+    color: white;
+}
+
+.friend .profile_pic{
+    border: white solid 1px;
+}
+
+.friend p{
+    color: #f8f8f8;
+}

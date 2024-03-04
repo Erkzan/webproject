@@ -1,0 +1,73 @@
+/* RegisterPage.module.css */
+.register_page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2em;
+}
+
+.welcome_header {
+  font-size: 2.5rem; /* Adjusts the size of the welcome message */
+  color: #333; /* Sets the text color */
+  margin-bottom: 0.5rem; /* Adds some space below the header */
+  text-align: center; /* Centers the header text */
+}
+
+.register_header {
+  font-size: 1.5rem; /* Adjusts the size of the registration message */
+  color: #666; /* Sets the text color to be slightly lighter than the header */
+  margin-bottom: 2rem; /* Adds more space below the paragraph to separate it from the form */
+  text-align: center; /* Centers the paragraph text */
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+button.login_button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button.login_button:hover {
+  background-color: #0056b3;
+}
+
+h3 {
+  margin: 0 0 5px;
+}
+
+.username_header,
+.display_name_header,
+.email_header,
+.password_header {
+  font-size: 18px;
+  color: #333;
+}
+
+@media (max-width: 480px) {
+  form {
+    width: 90%;
+  }
+}

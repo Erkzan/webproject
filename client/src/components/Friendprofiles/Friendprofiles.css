@@ -1,0 +1,66 @@
+.Friendprofile-container {
+        width: 30%;
+        height: 50%;
+        margin-top: 2em;
+        margin-left: 2.5%;
+        border-radius: 10px;
+        background-color: #f8f8f8;
+  }
+
+  @media (width < 998px){
+    .Friendprofile-container {
+        width: 40%;
+        height: 50%;
+        margin-top: 2em;
+        margin-left: 6.5%;
+        border-radius: 10px;
+        background-color: #f8f8f8;
+    }
+  }
+
+.Friendprofile-container:hover {
+        background-color: #f0efef;
+  }
+
+  .Friendprofile-container .profile-pic {
+    border: solid 1px black;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    margin: auto;
+    margin-top: 30px;
+  }
+
+  @media (width < 998px){
+    .Friendprofile-container .profile-pic {
+        width: 70px;
+        height: 70px;
+        margin-top: 15px;
+      }
+  }
+
+  .Friendprofile-container .user {
+    text-align: center;
+    margin-top: 1em;
+    font-weight: bold;
+    font-family: "Bungee";
+    color: #000000;
+    font-size: medium;
+  }
+
+  .Friendprofile-container .bio{
+    text-align: center;
+    margin-top: 1em;
+    font-family: "Bungee";
+    color: #323232;
+    background-color: transparent;
+    font-size: medium;
+  }
+
+  @media (width < 998px){
+    .Friendprofile-container .bio{
+        font-size: 15px;
+      }
+  }
+
+  

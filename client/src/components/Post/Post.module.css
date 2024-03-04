@@ -1,0 +1,104 @@
+.post_container {
+  display: inline-flex;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: left;
+  background-color: #f8f8f8;
+}
+
+.profile_pic {
+  border: solid 1px black;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin: auto;
+  margin-top: 15px;
+}
+
+.timestamp {
+  text-align: center;
+  margin-top: 10px;
+  color: #000000;
+}
+
+.post_pic {
+}
+
+.content_container {
+  padding: 10px;
+}
+
+.content_container {
+  margin-left: 10px;
+}
+
+.user {
+  font-weight: bold;
+  font-family: "Bungee";
+  color: #000000;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin-left: 10%;
+}
+
+.interaction {
+  background-color: #f8f8f8;
+  border: none;
+  height: 40px;
+  max-width: 40px;
+}
+
+.like_button {
+  background: transparent url(interaction_pictures/like.png) no-repeat center;
+  background-size: 90%;
+}
+
+.like_button:hover {
+  background: transparent url(interaction_gifs/like.gif) no-repeat center;
+  background-size: 90%;
+}
+
+.dislike_button {
+  background: transparent url(interaction_pictures/dislike.png) no-repeat center;
+  background-size: 90%;
+}
+
+.dislike_button:hover {
+  background: transparent url(interaction_gifs/dislike.gif) no-repeat center;
+  background-size: 90%;
+}
+
+.comment_button {
+  background: transparent url(interaction_pictures/comment.png) no-repeat center;
+  background-size: 90%;
+}
+
+.comment_button:hover {
+  background: transparent url(interaction_gifs/comment.gif) no-repeat center;
+  background-size: 90%;
+}
+
+.share_button {
+  background: transparent url(interaction_pictures/share.png) no-repeat center;
+  background-size: 90%;
+}
+
+.share_button:hover {
+  background: transparent url(interaction_gifs/share.gif) no-repeat center;
+  background-size: 90%;
+}
+
+.save_button {
+  background: transparent url(interaction_pictures/save.png) no-repeat center;
+  background-size: 90%;
+}
+
+.save_button:hover {
+  background: transparent url(interaction_gifs/save.gif) no-repeat center;
+  background-size: 90%;
+}
