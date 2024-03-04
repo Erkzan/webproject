@@ -109,4 +109,8 @@ profileRouter.post("/changeProfile", async (req, res) => {
   res.send("JE");
 });
 
+profileRouter.post("/checkLogin", async (req, res) => {
+  
+});
+
 export default profileRouter;
