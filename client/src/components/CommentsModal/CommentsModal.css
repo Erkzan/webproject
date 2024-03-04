@@ -1,0 +1,77 @@
+@media (width < 998px){
+    .txt {
+        margin: auto;
+        width: 80%;
+        height: 12em;
+        margin-top: 7em;
+    }
+    
+    .profile{
+        width: 5em;
+        height: 5em;
+        margin: center;
+    }
+}
+
+.container {
+    display: flex;
+}
+
+
+.left-div {
+    width: 15%;
+    background-color: #ffffff; 
+    padding: 10px;
+    height: 20em;
+    display: flex;
+    margin-left: 5em;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+.right-div {
+    width: 80%;
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    height: 20em;
+    display: flex;
+    flex-direction: column; 
+    justify-content: end;
+    align-items: left; 
+}
+
+.username{
+    font-size: xl;
+    margin-top: 1em;
+    margin-left: center;
+}
+
+.text{
+    padding: 1em;
+}
+
+.profile-pic{
+    border: solid 1px black;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    margin-left: center;
+}
+
+.foots {
+    position: fixed;
+    bottom: 0;
+    width: calc(100% - 20.98%);
+    background-color: white;
+    padding: 15px; 
+    border-top: 1px solid #ccc; 
+    border: 0;
+    display: flex; 
+    justify-content: center; 
+}  
+
+.space{
+    height: 5em;
+    width: 100%;
+}

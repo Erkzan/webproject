@@ -1,9 +1,17 @@
 import { Link } from "react-router-dom";
-
+import { useState } from 'react';
+import Modall from 'react-bootstrap/Modal';
 import classes from "./Post.module.css";
+import Comments from "../Comments/Comments";
+import CommentsModal from "../CommentsModal/CommentsModal";
 
 function Post() {
   let username = "erikkarlsson";
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   return (
     <div className={classes.post_container}>
@@ -27,15 +35,16 @@ function Post() {
         </div>
         <div className={classes.post_pic}></div>
         <footer className="">
-          <button
+        <button
             className={`col ${classes.interaction} ${classes.like_button}`}
           ></button>
           <button
             className={`col ${classes.interaction} ${classes.dislike_button}`}
           ></button>
-          <button
+          <button onClick={handleShow}
             className={`col ${classes.interaction} ${classes.comment_button}`}
           ></button>
+          <CommentsModal show={show} handleClose={handleClose}/>
           <button
             className={`col ${classes.interaction} ${classes.share_button}`}
           ></button>
