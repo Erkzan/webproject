@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 import classes from "./RegisterPage.module.css";
 
 function RegisterPage() {
@@ -51,6 +50,11 @@ function RegisterPage() {
     }));
   };
 
+  // Function to navigate to the login page
+  const goToLogin = () => {
+    navigate("/login"); // Update "/login" to your login page's route
+  };
+
   return (
     <>
       <title>Register</title>
@@ -88,10 +92,16 @@ function RegisterPage() {
             onChange={handleChange}
           ></input>
           <div></div>
-          <button className={classes.login_button} type="submit">
+          <button className={classes.register_button} type="submit">
             Register
           </button>
-          <div></div>
+          {/* Add a prompt and button for existing users to log in */}
+          <div className={classes.login_prompt}>
+            Already have an account?{" "}
+            <button className={classes.login_button} onClick={goToLogin}>
+              Log in
+            </button>
+          </div>
         </form>
       </div>
     </>
