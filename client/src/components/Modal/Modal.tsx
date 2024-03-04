@@ -15,16 +15,13 @@ function Modal() {
             +
       </div>
       <div className="buttonhover"></div>
-
       <Modall show={show} onHide={handleClose} size="xl">
-        <Modall.Header closeButton className="head">
+        <Modall.Header className="head">
           <Modall.Title className="headtext">New Post</Modall.Title>
         </Modall.Header>
         <Modall.Body>
-            <div className="container">
                 <div className="profile"></div>
                 <textarea className="text" placeholder="Write..."></textarea>
-            </div>
         </Modall.Body>
         <Modall.Footer className="foot">
           <div className="close" onClick={handleClose}>
