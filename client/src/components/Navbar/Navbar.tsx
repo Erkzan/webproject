@@ -1,4 +1,6 @@
 import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import React, { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
@@ -106,7 +108,7 @@ function NavBar() {
             <Nav.Link className="link" href="/">
               Home
             </Nav.Link>
-            <div className="link box_search">
+            <div className="box_search">
               <Nav.Link>
                 <input
                   type="text"
@@ -124,35 +126,29 @@ function NavBar() {
             {/* Conditional Rendering for Login/My Profile and Logout */}
             {isLoggedIn ? (
               <>
-                <div className="btn-group">
-                  <Nav.Link
-                    className="link btn btn-secondary"
-                    href={"/UserProfile/" + username}
-                  >
+                <div className="btn-group link">
+                  <Nav.Link className="link" href={"/UserProfile/" + username}>
                     My Profile
                   </Nav.Link>
                   <button
                     type="button"
-                    className="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split"
-                    data-toggle="dropdown"
+                    className="btn btn-secondary dropdown-toggle dropdown-toggle-split"
+                    data-bs-toggle="dropdown"
                     aria-haspopup="true"
                     aria-expanded="false"
-                    data-bs-toggle="dropdown"
                   >
                     <span className="sr-only"></span>
                   </button>
 
-                  <ul className="dropdown-menu">
-                    <li>
-                      <button
-                        className="link dropdown-item"
-                        onClick={handleLogout}
-                        data-toggle="dropdown"
-                      >
-                        Logout
-                      </button>
-                    </li>
-                  </ul>
+                  <div className="dropdown-menu">
+                    <button
+                      className="link dropdown-item"
+                      onClick={handleLogout}
+                      data-bs-toggle="dropdown"
+                    >
+                      Sign Out
+                    </button>
+                  </div>
                 </div>
               </>
             ) : (

@@ -12,7 +12,10 @@
 
 .link {
   color: #eee;
-  margin-top: 3.7%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .link:hover {
@@ -22,6 +25,7 @@
 .box_search {
   position: relative;
   margin-top: auto;
+  height: 50px;
 }
 
 .s_input {
@@ -29,6 +33,7 @@
   border: none;
   background: none;
   transition: 0.5s;
+  height: 30px;
 }
 
 .box_search:hover .s_input {
@@ -38,13 +43,14 @@
   padding-left: 10px;
   font-size: 15px;
   color: black;
+  height: 30px;
 }
 
 .box_search p {
   position: absolute;
-  top: 50%;
-  left: 50%;
   transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
   transition: 0.2s;
   font-family: "Bungee", system-ui;
   color: #eee;
@@ -56,5 +62,20 @@
 }
 
 .dropdown-item {
-  background-color: red;
+  color: #eee;
+}
+
+.dropdown-item:hover {
+  color: lightblue;
+  background-color: #333;
+}
+
+.dropdown-menu {
+  background-color: #333;
+  border: none;
+}
+
+.dropdown-toggle-split {
+  background-color: #333;
+  border: none;
 }
