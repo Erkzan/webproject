@@ -15,19 +15,22 @@ postRouter.post("/addPost", async (req, res) => {
 
   //uppdatera comment på profil
 
-  await postModel.create({
-    message: req.body.message,
-    author: data.name,
-    authorId: data._id,
-    likes: 0,
-    dislikes: 0,
-    isComment: false,
-    shares: 0,
-  });
-
-
-
-  res.send("Postat");
+  if (data) {
+    await postModel.create({
+      message: req.body.message,
+      author: data.name,
+      authorId: data._id,
+      likes: 0,
+      dislikes: 0,
+      isComment: false,
+      shares: 0,
+    });
+  
+    res.send("Postat");
+  }
+  else {
+    res.send("fel");
+  }
 });
 
 postRouter.post("/addComment", async(req, res) => {

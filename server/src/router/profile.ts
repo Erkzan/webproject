@@ -1,12 +1,9 @@
 import express from "express";
 import jwt from "jsonwebtoken";
-import path from "path";
 import { userpassModel } from "../../db/userpass.db";
 import { profileModel } from "../../db/users.db";
 
 export const profileRouter = express.Router();
-
-const dbPath = path.resolve(__dirname, "../../DB/users.json");
 
 profileRouter.post("/login", async (req, res) => {
   console.log("loggar in");
@@ -18,7 +15,7 @@ profileRouter.post("/login", async (req, res) => {
   if (foundUser) {
     const token = jwt.sign(
       { username: foundUser.username },
-      "bögbögbögbögbögbögbög",
+      "hemlighemlighemlighemlig",
       { expiresIn: "1h" }
     );
 
@@ -64,7 +61,7 @@ profileRouter.post("/register", async (req, res) => {
 
     const token = jwt.sign(
       { username: req.body.username },
-      "bögbögbögbögbögbögbög",
+      "hemlighemlighemlighemlig",
       { expiresIn: "1h" }
     );
 
@@ -85,7 +82,6 @@ profileRouter.post("/register", async (req, res) => {
       secure: true,
       //domain: ".localhost:8080"
     });
-
 
     res.send("hejsan");
   }
@@ -110,7 +106,24 @@ profileRouter.post("/changeProfile", async (req, res) => {
 });
 
 profileRouter.post("/checkLogin", async (req, res) => {
-  
+  try {
+    console.log(req.cookies);
+    let token = req.cookies.token;
+    token = jwt.verify(token, "hemlighemlighemlighemlig");
+    console.log(token);
+    //req.username = token.username;
+    res.send(token.username);
+  } catch (error) {
+    res.send(null);
+  }
+});
+
+profileRouter.post("/logout", (req, res) => {
+  console.log("logout");
+  try {
+    res.clearCookie("token");
+  } catch {}
+  res.send("error");
 });
 
 export default profileRouter;

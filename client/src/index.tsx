@@ -9,6 +9,8 @@ import MyProfile from "./pages/MyProfile";
 import RegisterPage from "./pages/RegisterPage";
 import Search from "./pages/Search";
 import UserProfile from "./pages/UserProfile";
+import LoginPage from "./pages/LoginPage";
+
 // CSS
 import "./index.css";
 
@@ -27,6 +29,7 @@ root.render(
         <Route path="/UserProfile/:username" element={<UserProfile />} />
 
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/login" element={<LoginPage />} />
 
         <Route path="/*" element={<HomePage />} />
       </Routes>

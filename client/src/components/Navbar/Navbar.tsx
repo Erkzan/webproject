@@ -1,31 +1,87 @@
 import "bootstrap/dist/css/bootstrap.css";
+import React, { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import { useNavigate } from "react-router-dom";
 import "./Navbar.css";
 
 async function getUsername() {
   console.log("sending cookie details");
-  
-      const response = await fetch("http://localhost:8080/profile/checkLogin", {
-        method: "POST",
-        mode: "cors",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        
-      });
+  try {
+    const response = await fetch("http://localhost:8080/profile/checkLogin", {
+      method: "POST",
+      mode: "cors",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
 
-      let txtResponse = await response.text()
-      console.log(txtResponse);
+    let txtResponse = await response.text();
+    console.log(txtResponse);
+    return txtResponse; // Assuming this returns a username if logged in, otherwise an empty string or error
+  } catch (error) {
+    console.error("Failed to check login status:", error);
+    return null; // Indicates an error or not logged in
+  }
+}
+
+async function logout() {
+  try {
+    const response = await fetch("http://localhost:8080/profile/logout", {
+      method: "POST",
+      mode: "cors",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+
+    console.log("Logged out successfully");
+    return true;
+  } catch (error) {
+    console.error("Failed to logout:", error);
+    return false;
+  }
 }
 
 function NavBar() {
+  const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [username, setUsername] = useState("");
+
+  useEffect(() => {
+    getUsername().then((username) => {
+      if (username) {
+        setIsLoggedIn(true);
+        setUsername(username);
+      } else {
+        setIsLoggedIn(false);
+      }
+    });
+  }, []);
+
+  const handleLogout = async () => {
+    const result = await logout();
+    if (result) {
+      setIsLoggedIn(false);
+      setUsername("");
+      navigate("/");
+      console.log("logged out succesfully");
+    } else {
+      console.log("Could not log out");
+    }
+  };
+
   const handleMouseEvent = (e: React.MouseEvent<HTMLInputElement>) => {
     const inputElement = e.currentTarget as HTMLInputElement;
     inputElement.blur();
@@ -65,9 +121,21 @@ function NavBar() {
             <Nav.Link className="link" href="/friends">
               Friends
             </Nav.Link>
-            <Nav.Link className="link" href="/MyProfile">
-              Profile
-            </Nav.Link>
+            {/* Conditional Rendering for Login/My Profile and Logout */}
+            {isLoggedIn ? (
+              <>
+                <Nav.Link className="link" href={"/MyProfile/" + username}>
+                  My Profile
+                </Nav.Link>
+                <Nav.Link className="link" onClick={handleLogout}>
+                  Logout
+                </Nav.Link>
+              </>
+            ) : (
+              <Nav.Link className="link" href="/login">
+                Login
+              </Nav.Link>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>
