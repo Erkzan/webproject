@@ -20,11 +20,24 @@ code {
 }
 
 .post-feed {
-  width: 61%;
+  width: 94%;
   margin-left: 3%;
-  margin-top: 10em;
-  margin-right: 3%;
+  margin-top: 9.5em;
+  margin-right: 1%;
   border-radius: 10px;
+}
+
+.left{
+    width: 67%;
+    height: 110%;
+    background-color: #ffffff; 
+    padding: 10px;
+    display: flex;
+    flex-direction: column; 
+    justify-content: left; 
+    align-items: left; 
+    overflow: auto;
+    position: static;
 }
 
 .friend-feed {
@@ -35,4 +48,15 @@ code {
   position: fixed;
   right: 3%;
   top: 10em;
+}
+   
+.right{
+    width: flex;
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    height: flex;
+    display: flex;
+    flex-direction: column; 
+    justify-content: end;
+    align-items: left;
 }

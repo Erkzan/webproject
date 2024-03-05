@@ -18,14 +18,17 @@ const HomePage = () => {
 
   return (
     <>
-      <NavBar />
+      <NavBar/>
       <div className="page">
-      
-        <section className="post-feed">
-          {posts}
-        </section>
-        <aside className="friend-feed">
-          {myFriends}
+        <div className="left">
+          <div className="post-feed">
+            {posts}
+          </div>
+        </div>
+        <aside className="right">
+          <div className="friend-feed">
+            {myFriends}
+          </div>
           <Modal/>
         </aside>
       </div>
