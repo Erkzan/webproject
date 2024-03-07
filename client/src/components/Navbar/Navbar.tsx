@@ -2,6 +2,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import React, { useEffect, useState } from "react";
+import { Dropdown } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -73,15 +74,17 @@ function NavBar() {
   }, []);
 
   const handleLogout = async () => {
-    const result = await logout();
-    if (result) {
-      setIsLoggedIn(false);
-      setUsername("");
-      navigate("/");
-      console.log("logged out succesfully");
-    } else {
-      console.log("Could not log out");
-    }
+    setTimeout(async () => {
+      const result = await logout();
+      if (result) {
+        setIsLoggedIn(false);
+        setUsername("");
+        navigate("/login");
+        console.log("logged out succesfully");
+      } else {
+        console.log("Could not log out");
+      }
+    }, 0);
   };
 
   const handleMouseEvent = (e: React.MouseEvent<HTMLInputElement>) => {
@@ -130,25 +133,20 @@ function NavBar() {
                   <Nav.Link className="link" href={"/UserProfile/" + username}>
                     My Profile
                   </Nav.Link>
-                  <button
-                    type="button"
-                    className="btn btn-secondary dropdown-toggle dropdown-toggle-split"
-                    data-bs-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    <span className="sr-only"></span>
-                  </button>
+                  <Dropdown>
+                    <Dropdown.Toggle
+                      split
+                      variant="secondary"
+                      id="dropdown-split-basic"
+                      data-testid="profile-dropdown-toggle"
+                    />
 
-                  <div className="dropdown-menu">
-                    <button
-                      className="link dropdown-item"
-                      onClick={handleLogout}
-                      data-bs-toggle="dropdown"
-                    >
-                      Sign Out
-                    </button>
-                  </div>
+                    <Dropdown.Menu>
+                      <Dropdown.Item onClick={handleLogout}>
+                        Sign Out
+                      </Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
                 </div>
               </>
             ) : (

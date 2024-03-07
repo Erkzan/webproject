@@ -1,6 +1,6 @@
 import "./Friendprofiles.css";
 
-function Friend() {
+function Friendprofiles() {
     return (
       <>
           <div className="Friendprofile-container">
@@ -12,5 +12,5 @@ function Friend() {
     );
   }
   
-  export default Friend;
+  export default Friendprofiles;
   

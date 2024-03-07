@@ -11,10 +11,10 @@ const postSchema : Schema = new Schema({
     image : {type : String, required: false},
     author : {type : String, required: true},
     authorId : {type : ObjectId, required: true},
-    likes : {type : Number, required: true},
-    dislikes : {type : Number, required: true},
+    likes : {type : Array, required: true},
+    dislikes : {type : Array, required: true},
     commentUnder : {type : ObjectId, required: false},
-    shares : {type : Number, required: true}
+    shares : {type : Array, required: true}
 });
 
 

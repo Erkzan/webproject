@@ -137,4 +137,38 @@ profileRouter.post("/getNameById", async (req, res) => {
   }
 });
 
+profileRouter.post("/getSearchedProfiles", async (req, res) => {
+  let data = await profileModel.find({});
+
+  let newData = [];
+
+  data.forEach((current) => {
+    if (
+      current.name.includes(req.body.search) ||
+      current.username.includes(req.body.search)
+    ) {
+      newData.push(current);
+    }
+  });
+
+  res.send(newData);
+});
+
+profileRouter.post("/getAll", async (req, res) => {
+  let data = await profileModel.find({});
+
+  try {
+    let myProfile = await profileModel.findOne({
+      username: req.cookies.token.username,
+    });
+
+    const startIndex = data?.indexOf(myProfile);
+
+    if (startIndex !== -1) {
+      data?.splice(startIndex, 1);
+    }
+  } catch (error) {}
+  res.send(data);
+});
+
 export default profileRouter;

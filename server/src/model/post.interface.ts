@@ -6,8 +6,8 @@ export interface Post{
     image : String; // Temporary
     author : String;
     authorId : String;
-    likes : number;
-    dislikes : number;
+    likes : Array;
+    dislikes : Array;
     commentUnder : ObjectId;
-    shares : number;
+    shares : Array;
 } 

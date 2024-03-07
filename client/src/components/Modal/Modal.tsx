@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Modall from "react-bootstrap/Modal";
 import { useNavigate } from "react-router-dom";
 import "./Modal.css";
@@ -84,6 +84,7 @@ function Modal() {
       .catch((error) => {
         console.error("There was a problem with your fetch operation:", error);
       });
+    window.location.reload();
   };
 
   return (

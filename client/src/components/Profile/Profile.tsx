@@ -1,34 +1,33 @@
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
-
+import { Link } from "react-router-dom";
 import classes from "./Profile.module.css";
 
-function Profile() {
-  // Assuming username is obtained from props or state
-  const user = "Milton Niklasson";
-  const username = "miltonniklasson";
-  const bio = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hicofficiis fugiat excepturi eius voluptatibus aspernatur.";
+interface ProfileProps {
+  userData: {
+    id: string;
+    name: string;
+    username: string;
+    bio: string;
+  };
+}
 
-  // const bio = getFromDatabase(bio(username))
-  // const user = getFromDatabase(user(username))
-
-
+const Profile: React.FC<ProfileProps> = ({ userData }) => {
   return (
     <div className={classes.profile_container}>
       <div className={`col-1 ${classes.profile_pic}`}></div>
       <div className={`col ${classes.profile_info}`}>
         <Link
-          to={{ pathname: `/UserProfile/${username}`}}
+          to={{ pathname: `/UserProfile/${userData.username}` }}
           className={classes.user}
         >
-          {user}
+          {userData.name}
         </Link>
-        <p className={classes.username}>{username}</p>
+        <p className={classes.username}>{userData.username}</p>
         <div>
-          <p className={classes.bio}>{bio}</p>
+          <p className={classes.bio}>{userData.bio}</p>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default Profile;

@@ -4,6 +4,7 @@ import { postModel } from "../../db/posts.db";
 import { profileModel } from "../../db/users.db";
 import { checkLogin } from "../service/middleware";
 import { PostService } from "../service/post";
+import { ObjectId } from "mongodb";
 
 const postService = new PostService();
 
@@ -27,7 +28,6 @@ postRouter.post("/addPost", checkLogin, async (req, res) => {
       isComment: false,
       shares: 0,
     });
-
 
     res.send("Postat");
   } else {
@@ -55,6 +55,36 @@ postRouter.post("/getComments", async (req, res) => {
   });
 
   res.send(data);
+});
+
+postRouter.post("/addLike", checkLogin, async (req, res) => {
+  try {
+    let myProfile = await profileModel.findOne({
+      username: req.cookies.token.username,
+    });
+
+    await postService.like(req.body.id, myProfile?._id);
+
+  } catch (e) {
+    res.send(e);
+  }
+});
+
+postRouter.post("/addDislike", checkLogin, async (req, res) => {
+  try {
+    let data = await postModel.findById(req.body.id);
+    let myProfile = await profileModel.findOne({
+      username: req.cookies.token.username,
+    });
+
+    data.dislikes.push(myProfile._id);
+
+    await postModel.findByIdAndUpdate(req.body.id, {
+      dislikes: data.dislikes,
+    });
+  } catch (e) {
+    res.send(e);
+  }
 });
 
 export default postRouter;
