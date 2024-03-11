@@ -17,11 +17,5 @@
     "jest-fetch-mock": "^3.0.3",
     "mongodb": "^6.4.0",
     "react-test-renderer": "^18.2.0"
-  },
-  "setupFiles": [
-    "jest-fetch-mock/setupJest"
-  ],
-  "scripts": {
-    "test": "jest"
   }
 }
