@@ -4,6 +4,8 @@ import NavBar from "../components/Navbar/Navbar";
 
 import { useEffect, useState } from "react";
 import "./MyProfile.css";
+import { ObjectId } from "mongodb";
+import Post from "../components/Post/Post";
 
 async function getData(username: string | undefined) {
   let response = await fetch("http://localhost:8080/profile/getProfile", {
@@ -23,15 +25,74 @@ async function getData(username: string | undefined) {
   return data;
 }
 
+async function getPost(id: ObjectId) {
+  let response = await fetch("http://localhost:8080/posts/getPostById", {
+    method: "POST",
+    mode: "cors",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ id }),
+  });
+
+  let txtResponse = await response.text();
+
+  // Check if txtResponse is not empty
+  if (!txtResponse) {
+    console.error('Response from getPostById is empty');
+    return; // Optionally, return a default value or handle the error as needed
+  }
+
+  try {
+    let post = JSON.parse(txtResponse);
+    let dataC = {
+      message: post.message,
+      author: post.author,
+      name: post.name,
+      likes: post.likes,
+      dislikes: post.dislikes,
+      timestamp: post.timestamp,
+      _id: post._id,
+    };
+
+    return <Post postData={dataC} />;
+  } catch (error) {
+    // Handle or log the error
+    console.error('Error parsing JSON from getPostById:', error);
+    return; // Optionally, return a default value or handle the error as needed
+  }
+}
+
 const MyProfile = () => {
   const { username } = useParams();
 
   const [userData, setUserData] = useState<any>(null);
+  const [userPostIds, setUserPostIds] = useState<any>([]);
+  const [userPosts, setUserPosts] = useState<any>([]);
+  
+  useEffect(() => {
+    if (userData) {
+      const postIds = userData.profile.posts;
+      setUserPostIds(postIds);
+    }
+  }, [userData]);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      if (userPostIds.length > 0) {
+        const posts = await Promise.all(userPostIds.map((id: ObjectId) => getPost(id)));
+        setUserPosts(posts.reverse());
+      }
+    };
+  
+    fetchPosts();
+  }, [userPostIds]);
+
 
   useEffect(() => {
     const fetchData = async () => {
       const result = await getData(username);
-      console.log(result);
       setUserData(result);
     };
     fetchData();
@@ -39,7 +100,7 @@ const MyProfile = () => {
 
 
   async function changeProfile(){
-      let res = await fetch("http://localhost:8080/profile/changeProfile", {
+      await fetch("http://localhost:8080/profile/changeProfile", {
       method: "POST",
       mode: "cors",
       credentials: "include",
@@ -48,11 +109,6 @@ const MyProfile = () => {
       },
       body: JSON.stringify(userData.profile),
     });
-
-    // REMOVE
-    console.log(await res.text());
-    console.log("userData: ");
-    console.log(userData.profile);
   }
 
   return (
@@ -120,7 +176,7 @@ const MyProfile = () => {
         </section>
 
         <aside className="my_posts">
-          <div className="my_posts_feed">{}</div>
+          <div className="my_posts_feed">{userPosts}</div>
           <Modal />
         </aside>
       </div>

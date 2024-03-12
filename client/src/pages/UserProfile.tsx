@@ -100,13 +100,65 @@ const UserProfile = () => {
 
   return (
     <>
+    <NavBar />
+      <title>My profile</title>
+      <div className="myProfile-page">
+        <section className="myProfile-container">
+          <div className="myProfile-info">
+            <div className="col my-profile-pic">
+              <form className="profile-pic-container" action="/action_page.php">
+                <input
+                  className="profile-pic-color"
+                  type="color"
+                  value={userData?.profile.profilePicture || "#ffffff"}
+                />
+              </form>
+            </div>
+
+            <div className="col names">
+            <input
+              className="row names"
+              type="text"
+              value={userData?.profile.name || ""}
+              placeholder="Name"
+            />
+            <input
+              className="row names"
+              type="text"
+              value={userData?.profile.username || ""}
+              placeholder="Username"
+              readOnly
+            />
+            </div>
+          </div>
+          <textarea
+            className="bio"
+            name="bio"
+            id="bio"
+            placeholder="No bio..."
+            value={userData?.profile.bio || ""}
+          ></textarea>
+        </section>
+
+        <aside className="my_posts">
+          <div className="my_posts_feed">{userPosts}</div>
+        </aside>
+      </div>
+    </>
+  );
+};
+
+export default UserProfile;
+
+
+/**
+ * <>
     <title>{username + "'s profile"}</title>
       <NavBar />
       <div className="userProfile-page">
-        <section className="userProfile-container">
+        <section className="classes.">
           <div className="userProfile-info">
-            <div className="col user-profile-pic">
-              <img src="" alt="" />
+            <div className="col classes.profile_pic" style={{backgroundColor: userData?.profile.profilePicture }}>
             </div>
 
             <div className="col names">
@@ -118,9 +170,9 @@ const UserProfile = () => {
             className="bio"
             name="bio"
             id="bio"
-            placeholder="Add your bio..."
             readOnly
-          >{userData?.profile.bio}</textarea>
+            value={userData?.profile.bio}
+          ></textarea>
         </section>
 
         <aside className="user_posts">{userPosts}</aside>
@@ -128,5 +180,4 @@ const UserProfile = () => {
     </>
   );
 };
-
-export default UserProfile;
+ */

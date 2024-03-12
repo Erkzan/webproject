@@ -78,6 +78,7 @@ function Post(props: { postData: any }) {
                 },
                 body: JSON.stringify({ id: postData._id }),
               });
+              window.location.reload();
             }}
           ></button>
           <div>{likes}</div>
@@ -93,6 +94,7 @@ function Post(props: { postData: any }) {
                 },
                 body: JSON.stringify({ id: postData._id }),
               });
+              window.location.reload();
             }}
           ></button>
           <div>{dislikes}</div>
@@ -103,6 +105,18 @@ function Post(props: { postData: any }) {
           <CommentsModal show={show} handleClose={handleClose} />
           <button
             className={`col ${classes.interaction} ${classes.share_button}`}
+            onClick={async () => {
+              await fetch("http://localhost:8080/posts/share", {
+                method: "POST",
+                mode: "cors",
+                credentials: "include",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ id: postData._id }),
+              });
+              window.location.reload();
+            }}
           ></button>
           <div>{shares}</div>
         </footer>

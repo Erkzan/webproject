@@ -21,7 +21,7 @@ profileRouter.post("/login", async (req, res) => {
 
     res.cookie("token", token, {
       httpOnly: true,
-      maxAge: 600 * 1000,
+      maxAge: 600 * 1000 * 6,
       sameSite: "none",
       secure: true,
     });
@@ -53,7 +53,7 @@ profileRouter.post("/register", async (req, res) => {
     const token = jwt.sign(
       { username: req.body.username },
       "hemlighemlighemlighemlig",
-      { expiresIn: "1h" }
+      { expiresIn: "3h" }
     );
 
     //set profile
@@ -69,10 +69,9 @@ profileRouter.post("/register", async (req, res) => {
       maxAge: 600 * 1000,
       sameSite: "none",
       secure: true,
-      //domain: ".localhost:8080"
     });
 
-    res.send("hejsan");
+    res.send("ok");
   }
 });
 
@@ -89,7 +88,6 @@ profileRouter.post("/getProfile", async (req, res) => {
 });
 
 profileRouter.post("/changeProfile", checkLogin, async (req, res) => {
-  console.log("Changeing" );
   let token = req.cookies.token;
   token = jwt.verify(token, "hemlighemlighemlighemlig");
 
@@ -97,11 +95,6 @@ profileRouter.post("/changeProfile", checkLogin, async (req, res) => {
     let myProfile = await profileModel.findOne({
       username: token.username,
     });
-
-    console.log(req.body);
-
-    console.log(req.body.profilePicture);
-    console.log(myProfile?._id);
 
     await profileModel.findByIdAndUpdate(myProfile?._id, {
       profilePicture: req.body.profilePicture,
@@ -152,20 +145,20 @@ profileRouter.post("/getPicById", async (req, res) => {
 });
 
 profileRouter.post("/getSearchedProfiles", async (req, res) => {
-  let data = await profileModel.find({});
-
-  let newData = [];
-
-  data.forEach((current) => {
-    if (
-      current.name.includes(req.body.search) ||
-      current.username.includes(req.body.search)
-    ) {
-      newData.push(current);
-    }
-  });
-
-  res.send(newData);
+  try {
+    const searchTerm = req.body.search;
+    
+    const newData = await profileModel.find({
+      $or: [
+        { name: { $regex: searchTerm, $options: 'i' } },
+        { username: { $regex: searchTerm, $options: 'i' } }
+      ]
+    });
+    
+    res.send(newData);
+  } catch (error) {
+    res.status(500);
+  }
 });
 
 profileRouter.post("/getAll", async (req, res) => {

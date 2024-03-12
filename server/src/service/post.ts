@@ -92,7 +92,8 @@ export class PostService {
     async getLikes(postId: ObjectId): Promise<number>{
         try {
             let post = await this.getPostById(postId);
-            if (post?.likes === undefined || post?.likes.length !> 0){
+            if (post?.likes === undefined){
+                console.log("Error likes undefined")
                 return 0;
             } else {
                 return post?.likes.length;
@@ -106,7 +107,8 @@ export class PostService {
     async getDislikes(postId: ObjectId): Promise<number>{
         try {
             let post = await this.getPostById(postId);
-            if (post?.dislikes === undefined || post?.dislikes.length !> 0) {
+            if (post?.dislikes === undefined) {
+                console.log("Error dislikes undefined")
                 return 0;
             } else {
                 return post?.dislikes.length;
@@ -120,7 +122,8 @@ export class PostService {
     async getShares(postId: ObjectId): Promise<number>{
         try {
             let post = await this.getPostById(postId);
-            if (post?.shares === undefined ||post?.shares.length !> 0) {
+            if (post?.shares === undefined) {
+                console.log("Error shares undefined")
                 return 0;
             } else {
                 return post?.shares.length;

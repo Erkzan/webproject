@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 
 // Pages
-import Friends from "./pages/Friends";
 import HomePage from "./pages/HomePage";
 import MyProfile from "./pages/MyProfile";
 import RegisterPage from "./pages/RegisterPage";
@@ -20,8 +19,7 @@ function App() {
         <Route index element={<HomePage />} />
         <Route path="/" element={<HomePage />} />
         <Route path="/MyProfile/:username" element={<MyProfile />} />
-        <Route path="/search" element={<Search />} />
-        <Route path="/friends" element={<Friends />} />
+        <Route path="/search/:query" element={<Search />} />
         <Route path="/UserProfile/:username" element={<UserProfile />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />

@@ -23,14 +23,10 @@
 .user-profile-pic {
   margin: auto;
   max-width: 30%;
-}
-
-.user-profile-pic img {
   width: 200px;
   height: 200px;
   border: solid black 1px;
   border-radius: 50%;
-  margin: calc((100% - 200px) / 2);
 }
 
 .names {

@@ -78,7 +78,7 @@ function NavBar() {
         setUsername("");
         navigate("/login");
       } else {
-        console.log("Could not log out");
+        console.log("Error logging out");
       }
     }, 0);
   };
@@ -91,11 +91,11 @@ function NavBar() {
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      window.location.href = `/search?query=${encodeURIComponent(
-        e.currentTarget.value
-      )}`;
+      const searchQuery = encodeURIComponent(e.currentTarget.value);
+      navigate(`/search/${searchQuery}`);
     }
   };
+  
 
   return (
     <Navbar expand="lg" className="navbar">
@@ -119,9 +119,6 @@ function NavBar() {
                 <p>Search</p>
               </Nav.Link>
             </div>
-            <Nav.Link className="link" href="/friends">
-              Friends
-            </Nav.Link>
             {/* Conditional Rendering for Login/My Profile and Logout */}
             {isLoggedIn ? (
               <>

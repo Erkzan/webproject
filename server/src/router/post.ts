@@ -121,8 +121,8 @@ postRouter.post("/share", checkLogin, async (req, res) => {
       username: token.username,
     });
 
-    postService.addShare(req.body.postId, myProfile?._id);
-    profileModel.findByIdAndUpdate(myProfile?._id, {$push: {shares: req.body.postId}});
+    await postService.addShare(req.body.id, myProfile?._id);
+    await profileModel.findByIdAndUpdate(myProfile?._id, {$push: {shares: req.body.postId}});
   
     res.send("ok");
   }
