@@ -93,7 +93,6 @@ function Modal() {
           <Modall.Title className="headtext">New Post</Modall.Title>
         </Modall.Header>
         <Modall.Body>
-          <div className="profile"></div>
           <textarea
             className="text"
             placeholder="Write..."
