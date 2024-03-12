@@ -3,6 +3,7 @@ import jwt from "jsonwebtoken";
 import { userpassModel } from "../../db/userpass.db";
 import { profileModel } from "../../db/users.db";
 import { checkLogin } from "../service/middleware";
+import Fuse, { IFuseOptions } from "fuse.js";
 
 export const profileRouter = express.Router();
 
@@ -146,15 +147,21 @@ profileRouter.post("/getPicById", async (req, res) => {
 
 profileRouter.post("/getSearchedProfiles", async (req, res) => {
   try {
-    const searchTerm = req.body.search;
-    
-    const newData = await profileModel.find({
-      $or: [
-        { name: { $regex: searchTerm, $options: 'i' } },
-        { username: { $regex: searchTerm, $options: 'i' } }
-      ]
-    });
-    
+    const searchTerm: string = req.body.search;
+
+    const allProfiles = await profileModel.find({});
+
+    const fuseOptions: IFuseOptions<any> = {
+      keys: ['name', 'username'],
+      threshold: 0.2, 
+      ignoreLocation: true,
+      includeScore: true
+    };
+
+    const fuse = new Fuse(allProfiles, fuseOptions);
+    const searchResults = fuse.search(searchTerm);
+    const newData = searchResults.map(result => result.item);
+
     res.send(newData);
   } catch (error) {
     res.status(500);
