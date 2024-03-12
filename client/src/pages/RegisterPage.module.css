@@ -1,4 +1,3 @@
-/* RegisterPage.module.css */
 .register_page {
   display: flex;
   flex-direction: column;
@@ -8,17 +7,17 @@
 }
 
 .welcome_header {
-  font-size: 2.5rem; /* Adjusts the size of the welcome message */
-  color: #333; /* Sets the text color */
-  margin-bottom: 0.5rem; /* Adds some space below the header */
-  text-align: center; /* Centers the header text */
+  font-size: 2.5rem; 
+  color: #333; 
+  margin-bottom: 0.5rem; 
+  text-align: center; 
 }
 
 .register_header {
-  font-size: 1.5rem; /* Adjusts the size of the registration message */
-  color: #666; /* Sets the text color to be slightly lighter than the header */
-  margin-bottom: 2rem; /* Adds more space below the paragraph to separate it from the form */
-  text-align: center; /* Centers the paragraph text */
+  font-size: 1.5rem;
+  color: #666; 
+  margin-bottom: 2rem; 
+  text-align: center; 
 }
 
 form {
