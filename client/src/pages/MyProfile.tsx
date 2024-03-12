@@ -119,7 +119,10 @@ const MyProfile = () => {
         <section className="myProfile-container">
           <div className="myProfile-info">
             <div className="col my-profile-pic">
-              <form className="profile-pic-container" action="/action_page.php">
+              <div className="profile-pic-color"></div>
+              <input type="color" value={"Change color"} />
+              <p>Change Color</p>
+              {/*<form className="profile-pic-container" action="/action_page.php">
                 <input
                   className="profile-pic-color"
                   type="color"
@@ -132,7 +135,7 @@ const MyProfile = () => {
                     }
                   })}
                 />
-              </form>
+                </form>*/}
             </div>
 
             <div className="col names">
@@ -176,8 +179,8 @@ const MyProfile = () => {
         </section>
 
         <aside className="my_posts">
-          <div className="my_posts_feed">{userPosts}</div>
           <Modal />
+          <div className="my_posts_feed">{userPosts}</div>
         </aside>
       </div>
     </>

@@ -1,5 +1,5 @@
 .post_container {
-  display: inline-flex;
+  display: flex;
   margin-bottom: 15px;
   border-radius: 10px;
   padding: 10px;
@@ -23,15 +23,14 @@
   color: #000000;
 }
 
-.post_pic {
-}
-
 .content_container {
   padding: 10px;
+  margin-left: 10px;
+  max-width: 80%;
 }
 
-.content_container {
-  margin-left: 10px;
+.post_text {
+  word-wrap: break-word;
 }
 
 .user {

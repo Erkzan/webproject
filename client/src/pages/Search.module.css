@@ -1,10 +1,14 @@
-.container {
-  display: grid;
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(30vw, 1fr)
-  ); /* Adjust 300px to your desired width */
-  grid-gap: 20px; /* Adjust the gap between grid items */
-
-  margin: 7em 3% 0 3%;
+.usersContainer {
+  width: 100%;
+  margin-top: 10em;
+  display: flex; 
+  flex-direction: row;
+  flex-wrap: wrap;         
 }
+
+.profileContainer {
+    flex-basis: calc(33.33% - 5%);
+    max-width: calc(33.33% - 5%);
+    margin: 0 2.5%;
+    height: min-content;
+  }
