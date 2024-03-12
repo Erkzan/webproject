@@ -32,11 +32,7 @@ export class PostService {
 
     async addLike(postId: ObjectId, myId: ObjectId){
         try {
-            let data = await postModel.findById(postId);
-            data?.likes.push(myId);
-            await postModel.findByIdAndUpdate(postId, {likes: data?.likes});
-            return true;
-
+            await postModel.findByIdAndUpdate(postId, {$addToSet: {likes: myId}}, {new: true, runValidators: true});
         } catch (error) {
             return false;
         }
@@ -44,13 +40,7 @@ export class PostService {
 
     async removeLike(postId: ObjectId, myId: ObjectId){
         try {
-            let data = await postModel.findById(postId);
-            const startIndex = data?.likes.indexOf(myId);
-
-            if (startIndex !== -1) {
-                data?.likes.splice(startIndex, 1);
-            }
-            await postModel.findByIdAndUpdate(postId, {likes: data?.likes});
+            await postModel.findByIdAndUpdate(postId, {$pull: {likes: myId}}, {new: true, runValidators: true});
             return true;
             
         } catch (error) {
@@ -61,9 +51,7 @@ export class PostService {
     
     async addDislike(postId: ObjectId, myId: ObjectId){
         try {
-            let data = await postModel.findById(postId);
-            data?.dislikes.push(myId);
-            await postModel.findByIdAndUpdate(postId, {dislikes: data?.dislikes});
+            await postModel.findByIdAndUpdate(postId, {$addToSet: {dislikes: myId}}, {new: true, runValidators: true});
             return true;
 
         } catch (error) {
@@ -73,13 +61,7 @@ export class PostService {
 
     async removeDislike(postId: ObjectId, myId: ObjectId){
         try {
-            let data = await postModel.findById(postId);
-            const startIndex = data?.dislikes.indexOf(myId);
-
-            if (startIndex !== -1) {
-                data?.dislikes.splice(startIndex, 1);
-            }
-            await postModel.findByIdAndUpdate(postId, {dislikes: data?.dislikes});
+            await postModel.findByIdAndUpdate(postId, {$pull: {dislikes: myId}}, {new: true, runValidators: true});
             return true;
             
         } catch (error) {
@@ -106,6 +88,56 @@ export class PostService {
         }
         return true;
     }
-    
-}
 
+    async getLikes(postId: ObjectId): Promise<number>{
+        try {
+            let post = await this.getPostById(postId);
+            if (post?.likes === undefined || post?.likes.length !> 0){
+                return 0;
+            } else {
+                return post?.likes.length;
+            }
+        } catch (error){
+            console.log("Error fetching number of likes: " + error);
+            return 0;
+        }
+    }
+
+    async getDislikes(postId: ObjectId): Promise<number>{
+        try {
+            let post = await this.getPostById(postId);
+            if (post?.dislikes === undefined || post?.dislikes.length !> 0) {
+                return 0;
+            } else {
+                return post?.dislikes.length;
+            }
+        } catch (error){
+            console.log("Error fetching number of dislikes: " + error);
+            return 0;
+        }
+    }
+
+    async getShares(postId: ObjectId): Promise<number>{
+        try {
+            let post = await this.getPostById(postId);
+            if (post?.shares === undefined ||post?.shares.length !> 0) {
+                return 0;
+            } else {
+                return post?.shares.length;
+            }
+        } catch (error){
+            console.log("Error fetching number of shares" + error);
+            return 0;
+        }
+    }
+    
+    async addShare(postId: ObjectId, myId: ObjectId){
+        try {
+            await postModel.findByIdAndUpdate(postId, {$addToSet: {shares: myId}}, {new: true, runValidators: true});
+            return true;
+
+        } catch (error) {
+            return false;
+        }
+    }
+}

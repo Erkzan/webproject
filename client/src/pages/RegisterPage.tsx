@@ -15,10 +15,8 @@ function RegisterPage() {
   const register = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
-    console.log(registerData);
-
     try {
-      console.log("sending register details");
+
       const response = await fetch("http://localhost:8080/profile/register", {
         method: "POST",
         mode: "cors",
@@ -33,8 +31,6 @@ function RegisterPage() {
         throw new Error("Network response was not ok");
       }
 
-      console.log(await response.text());
-      console.log("registration successful");
       navigate("/MyProfile/" + registerData.username);
       // Handle success response as needed
     } catch (error) {
