@@ -55,7 +55,7 @@ const Search = () => {
   useEffect(() => {
     if (searchResults) {
       let profiles = searchResults.map((profile: any) => {
-        return <Profile key={profile._id} userData={profile} />;
+        return(<div className={classes.profileContainer}><Profile key={profile._id} userData={profile} /></div>);
       });
       setFoundProfiles(profiles);
     }

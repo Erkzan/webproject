@@ -5,7 +5,7 @@
 }
 
 .profile_container {
-  display: inline-flex;
+  display: flex;
   margin-bottom: 15px;
   border-radius: 10px;
   background-color: #eee;
@@ -16,13 +16,14 @@
 .profile_pic {
   border: black solid 1px;
   border-radius: 50%;
-  min-width: 50px;
-  aspect-ratio: 1/1;
+  width: 50px;
+  height: 50px;
   margin: 10px auto auto auto;
 }
 
 .profile_info {
   padding: 10px;
+  max-width: 80%;
 }
 
 .username {
@@ -37,4 +38,8 @@
   color: black;
   font-weight: bold;
   font-family: "Bungee";
+}
+
+.bio{
+  word-wrap: break-word;
 }

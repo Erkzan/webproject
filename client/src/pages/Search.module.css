@@ -1,6 +1,14 @@
 .usersContainer {
-  border: solid 1px red;
   width: 100%;
-  height: 90vh;
-  margin-top: 5em;
+  margin-top: 10em;
+  display: flex; 
+  flex-direction: row;
+  flex-wrap: wrap;         
 }
+
+.profileContainer {
+    flex-basis: calc(33.33% - 5%);
+    max-width: calc(33.33% - 5%);
+    margin: 0 2.5%;
+    height: min-content;
+  }

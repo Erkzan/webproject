@@ -130,8 +130,8 @@ const HomePage = () => {
           {posts}
         </section>
         <aside className="right">
-          <div className="user-feed">{allUsers}</div>
           <Modal />
+          <div className="user-feed">{allUsers}</div>
         </aside>
       </div>
     </>
