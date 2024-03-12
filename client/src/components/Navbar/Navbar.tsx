@@ -25,10 +25,10 @@ async function getUsername() {
     }
 
     let txtResponse = await response.text();
-    return txtResponse; // Assuming this returns a username if logged in, otherwise an empty string or error
+    return txtResponse;
   } catch (error) {
     console.error("Failed to check login status:", error);
-    return null; // Indicates an error or not logged in
+    return null;
   }
 }
 
@@ -96,7 +96,6 @@ function NavBar() {
     }
   };
   
-
   return (
     <Navbar expand="lg" className="navbar">
       <Container>

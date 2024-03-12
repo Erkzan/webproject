@@ -32,7 +32,6 @@ function RegisterPage() {
       }
 
       navigate("/MyProfile/" + registerData.username);
-      // Handle success response as needed
     } catch (error) {
       console.error("Error posting data:", error);
     }
@@ -46,9 +45,8 @@ function RegisterPage() {
     }));
   };
 
-  // Function to navigate to the login page
   const goToLogin = () => {
-    navigate("/login"); // Update "/login" to your login page's route
+    navigate("/login");
   };
 
   return (
@@ -91,7 +89,6 @@ function RegisterPage() {
           <button className={classes.register_button} type="submit">
             Register
           </button>
-          {/* Add a prompt and button for existing users to log in */}
           <div className={classes.login_prompt}>
             Already have an account?{" "}
             <button className={classes.login_button} onClick={goToLogin}>

@@ -45,7 +45,6 @@ function AddComment(props: { commentUnder: ObjectId; onCommentAdded: () => void;
       navigate("/login");
     }
 
-    // Send text via fetch
     await fetch("http://localhost:8080/posts/addComment", {
       method: "POST",
       headers: {
@@ -70,7 +69,7 @@ function AddComment(props: { commentUnder: ObjectId; onCommentAdded: () => void;
         return txtData;
       })
       .then((data) => {
-        handleClose(); // Close the modal after successful submission
+        handleClose();
 
         if (data === "loginError") {
           navigate("/login");
@@ -80,7 +79,6 @@ function AddComment(props: { commentUnder: ObjectId; onCommentAdded: () => void;
         console.error("There was a problem with your fetch operation:", error);
       });
   };
-
 
   return (
     <>

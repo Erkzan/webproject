@@ -57,7 +57,6 @@ profileRouter.post("/register", async (req, res) => {
       { expiresIn: "3h" }
     );
 
-    //set profile
     await profileModel.create({
       username: req.body.username,
       name: req.body.displayName,

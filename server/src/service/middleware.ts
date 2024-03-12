@@ -1,7 +1,6 @@
 import express from "express";
 import jwt from "jsonwebtoken";
 
-
 export function checkLogin(req: { cookies: { token: any; }; }, res: { send: (arg0: string) => void; }, next: () => void)
 {
     try 
@@ -16,4 +15,3 @@ export function checkLogin(req: { cookies: { token: any; }; }, res: { send: (arg
         res.send("loginError");
     }
 }
-

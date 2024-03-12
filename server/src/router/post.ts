@@ -24,7 +24,7 @@ postRouter.post("/addPost", checkLogin, async (req, res) => {
       isComment: false,
       timestamp: Date.now(),
     });
-    
+
     await profileModel.findByIdAndUpdate(data?._id, {$push: {posts: newPost._id}});
 
     res.send("Postat");
@@ -47,7 +47,6 @@ postRouter.post("/addComment", checkLogin, async (req, res) => {
       commentUnder: req.body.commentUnder,
     });
 
-    
     res.send("Commentat");
   } else {
     res.send("fel");
@@ -56,7 +55,6 @@ postRouter.post("/addComment", checkLogin, async (req, res) => {
 
 postRouter.post("/getAll", async (req, res) => {
   let data = await postModel.find({});
-
   res.send(data);
 });
 
@@ -91,7 +89,6 @@ postRouter.post("/addLike", checkLogin, async (req, res) => {
 });
 
 postRouter.post("/addDislike", checkLogin, async (req, res) => {
-
   let token = req.cookies.token;
   token = jwt.verify(token, "hemlighemlighemlighemlig");
 

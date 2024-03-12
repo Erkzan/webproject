@@ -23,8 +23,8 @@ function Comments(props: { commentData: any }) {
   const [userData, setUserData] = useState<any>(null);
 
   let timediff = Date.now() - new Date(commentData.timestamp).getTime();
-  timediff = Math.floor(timediff/1000); //mil to sek
-  timediff = Math.floor(timediff/60); //sek to min
+  timediff = Math.floor(timediff/1000); //milli to sec
+  timediff = Math.floor(timediff/60); //sec to min
   let enhet = "m";
   
   if (timediff > 60){
@@ -47,20 +47,20 @@ function Comments(props: { commentData: any }) {
 
   return (
     <>
-      <div className="containers">
-        <div className="left-divs">
-         <div className="profile-pics" style={{ backgroundColor: userData.profile.profilePicture }} ></div>
-         <div className="timestamp" >{timediff + enhet}</div>
-       </div>
-      <div className="right-divs">
-        <div className="usernames">{userData.profile.name}</div>
-        <div className="texts">{commentData.text}</div>
-      </div>
-    </div>
+      {userData && (
+        <div className="containers">
+          <div className="left-divs">
+            <div className="profile-pics" style={{ backgroundColor: userData.profile.profilePicture }}></div>
+            <div className="timestamp">{timediff + enhet}</div>
+          </div>
+          <div className="right-divs">
+            <div className="usernames">{userData.profile.name}</div>
+            <div className="texts">{commentData.text}</div>
+          </div>
+        </div>
+      )}
     </>
   );
 }
 
 export default Comments;
-
-

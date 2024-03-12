@@ -37,11 +37,10 @@ async function getPost(id: ObjectId) {
   });
 
   let txtResponse = await response.text();
-
-  // Check if txtResponse is not empty
+  
   if (!txtResponse) {
     console.error('Response from getPostById is empty');
-    return; // Optionally, return a default value or handle the error as needed
+    return; 
   }
 
   try {
@@ -58,9 +57,8 @@ async function getPost(id: ObjectId) {
 
     return <Post postData={dataC} />;
   } catch (error) {
-    // Handle or log the error
     console.error('Error parsing JSON from getPostById:', error);
-    return; // Optionally, return a default value or handle the error as needed
+    return;
   }
 }
 
@@ -92,8 +90,8 @@ const MyProfile = () => {
     };
   
     fetchPosts();
+    // Re-render on refreshTrigger changes
   }, [userPostIds, refreshTrigger]);
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -102,7 +100,6 @@ const MyProfile = () => {
     };
     fetchData();
   }, []);
-
 
   async function changeProfile(){
       await fetch("http://localhost:8080/profile/changeProfile", {
@@ -151,6 +148,7 @@ const MyProfile = () => {
                 }
               })}
             />
+
             <input
               className="row names"
               type="text"
@@ -158,6 +156,7 @@ const MyProfile = () => {
               placeholder="Username"
               readOnly
             />
+
             </div>
           </div>
           <textarea
@@ -173,7 +172,7 @@ const MyProfile = () => {
                 bio: e.target.value
               }
             })}
-          ></textarea>
+          />
           <button onClick={changeProfile} className="save">Save</button>
         </section>
 
@@ -181,6 +180,7 @@ const MyProfile = () => {
           <Modal onPostAdded={refreshPosts} />
           <div className="my_posts_feed">{userPosts}</div>
         </aside>
+
       </div>
     </>
   );

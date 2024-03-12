@@ -25,7 +25,7 @@ async function getUsername(_id: any) {
     return jsonResponse.name;
   } catch (error) {
     console.error("Failed to fetch username:", error);
-    return null; // Indicates an error or not logged in
+    return null;
   }
 }
 
@@ -123,6 +123,7 @@ const HomePage = () => {
     };
 
     fetchUsers();
+    // Re-render on refreshTrigger change
   }, [refreshTrigger]);
 
   return (

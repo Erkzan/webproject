@@ -43,7 +43,6 @@ const CommentsModal: React.FC<CommentsModalProps> = ({ show, handleClose, postId
   useEffect(() => {
     async function getComments() {
       let data = await getCommentsFromPost(postId);
-      console.log(data);
       setComments(data);
     }
     if (show) {
@@ -68,11 +67,11 @@ return (
           {comments.map((comment: any) => {
             return (
               <Comments 
+                key={comment._id}
                 commentData={{
                   author: comment.author,
                   text: comment.message,
                   timestamp: comment.timestamp,
-                  key: comment._id
                 }}
               />
             );

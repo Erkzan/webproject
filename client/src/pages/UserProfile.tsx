@@ -3,7 +3,6 @@ import NavBar from "../components/Navbar/Navbar";
 import Post from "../components/Post/Post";
 import { ObjectId } from "mongodb";
 
-
 import "./UserProfile.css";
 import { useEffect, useState } from "react";
 
@@ -24,7 +23,6 @@ async function getProfile(username: string | undefined) {
   return profile;
 }
 
-
 async function getPost(id: ObjectId) {
   let response = await fetch("http://localhost:8080/posts/getPostById", {
     method: "POST",
@@ -38,10 +36,9 @@ async function getPost(id: ObjectId) {
 
   let txtResponse = await response.text();
 
-  // Check if txtResponse is not empty
   if (!txtResponse) {
     console.error('Response from getPostById is empty');
-    return; // Optionally, return a default value or handle the error as needed
+    return;
   }
 
   try {
@@ -58,12 +55,10 @@ async function getPost(id: ObjectId) {
 
     return <Post postData={dataC} />;
   } catch (error) {
-    // Handle or log the error
     console.error('Error parsing JSON from getPostById:', error);
-    return; // Optionally, return a default value or handle the error as needed
+    return; 
   }
 }
-
 
 const UserProfile = () => {
   const { username } = useParams();
@@ -149,35 +144,3 @@ const UserProfile = () => {
 };
 
 export default UserProfile;
-
-
-/**
- * <>
-    <title>{username + "'s profile"}</title>
-      <NavBar />
-      <div className="userProfile-page">
-        <section className="classes.">
-          <div className="userProfile-info">
-            <div className="col classes.profile_pic" style={{backgroundColor: userData?.profile.profilePicture }}>
-            </div>
-
-            <div className="col names">
-              <p className="row names">{userData?.profile.name}</p>
-              <p className="row names">{userData?.profile.username}</p>
-            </div>
-          </div>
-          <textarea
-            className="bio"
-            name="bio"
-            id="bio"
-            readOnly
-            value={userData?.profile.bio}
-          ></textarea>
-        </section>
-
-        <aside className="user_posts">{userPosts}</aside>
-      </div>
-    </>
-  );
-};
- */

@@ -6,8 +6,8 @@ import classes from "./Post.module.css";
 function Post(props: { postData: any }) {
   const { postData } = props;
   let timediff = Date.now() - new Date(postData.timestamp).getTime();
-  timediff = Math.floor(timediff/1000); //mil to sek
-  timediff = Math.floor(timediff/60); //sek to min
+  timediff = Math.floor(timediff/1000); //milli to sec
+  timediff = Math.floor(timediff/60); //sec to min
   let enhet = "m";
   
   if (timediff > 60){
@@ -80,7 +80,6 @@ function Post(props: { postData: any }) {
     }
     getProfilePic();
   }, []);
-    
 
   return (
     <div className={classes.post_container}>
