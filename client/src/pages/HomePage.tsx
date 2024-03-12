@@ -122,16 +122,15 @@ const HomePage = () => {
 
   return (
     <>
-    <title>Welcome to Y</title>
+      <title>Welcome to Y</title>
       <NavBar />
       <div className="page">
         <section className="post-feed">
           {/* Render posts from state */}
           {posts}
         </section>
-        <aside className="friend-feed">
-          {/* Render all users from state */}
-          {allUsers}
+        <aside className="right">
+          <div className="user-feed">{allUsers}</div>
           <Modal />
         </aside>
       </div>

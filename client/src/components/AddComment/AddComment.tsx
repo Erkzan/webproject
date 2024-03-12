@@ -1,6 +1,5 @@
-import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Modall from 'react-bootstrap/Modal';
+import { useState } from "react";
+import Modall from "react-bootstrap/Modal";
 import "../AddComment/AddComment.css";
 
 function AddComment() {
@@ -12,16 +11,16 @@ function AddComment() {
   return (
     <>
       <div className="Cbutton" onClick={handleShow}>
-            Add Comment
+        Add Comment
       </div>
       <div className="Cbuttonhover"></div>
       <Modall show={show} onHide={handleClose} size="xl">
         <Modall.Header className="Chead">
-          <Modall.Title className="Cheadtext">New Post</Modall.Title>
+          <Modall.Title className="Cheadtext">Add Comment</Modall.Title>
         </Modall.Header>
         <Modall.Body>
-                <div className="Cprofile"></div>
-                <textarea className="Ctext" placeholder="Write..."></textarea>
+          <div className="Cprofile"></div>
+          <textarea className="Ctext" placeholder="Write..."></textarea>
         </Modall.Body>
         <Modall.Footer className="Cfoot">
           <div className="Cclose" onClick={handleClose}>
@@ -37,5 +36,3 @@ function AddComment() {
 }
 
 export default AddComment;
-
-

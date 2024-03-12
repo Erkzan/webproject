@@ -21,16 +21,48 @@
 }
 
 .my-profile-pic {
-  margin: auto;
+  width: 30%;
+  min-height: 100%;
   max-width: 30%;
+  background-color: transparent;
 }
 
-.my-profile-pic img {
+.profile-pic-container {
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+  border: none;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-pic-color {
   width: 200px;
   height: 200px;
-  border: solid black 1px;
+  margin: 0;
   border-radius: 50%;
-  margin: calc((100% - 200px) / 2);
+  padding: 0;
+  border: solid 2px black;
+}
+
+.profile-pic-color:hover {
+  cursor: pointer;
+}
+
+.change-color {
+  position: absolute;
+  width: 100;
+  margin: auto 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+
+.profile-pic-container:hover .change-color {
+  opacity: 1;
 }
 
 .names {
@@ -58,10 +90,15 @@
 }
 
 .my_posts {
+  top: 10em;
   width: 30%;
   margin-right: 3%;
-  height: calc(50% + 32vh);
+  height: 97%;
   overflow: auto;
+}
+
+.my_posts_feed {
+  height: 80%;
 }
 
 .myProfile-page {

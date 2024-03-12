@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import Modal from "../components/Modal/Modal";
 import NavBar from "../components/Navbar/Navbar";
 
 import { useEffect, useState } from "react";
@@ -35,6 +36,22 @@ const MyProfile = () => {
     fetchData();
   }, [username]);
 
+  const [color, setColor] = useState("#ffffff"); // Initial color
+
+  const handleColorChange = async (e: { target: { value: typeof color } }) => {
+    setColor(e.target.value);
+    console.log(e.target.value);
+    await fetch("http://localhost:8080/profile/changeProfilePic", {
+      method: "POST",
+      mode: "cors",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ color: e.target.value }),
+    });
+  };
+
   return (
     <>
       <NavBar />
@@ -43,7 +60,14 @@ const MyProfile = () => {
         <section className="myProfile-container">
           <div className="myProfile-info">
             <div className="col my-profile-pic">
-              <img src="" alt="" />
+              <form className="profile-pic-container" action="/action_page.php">
+                <input
+                  className="profile-pic-color"
+                  type="color"
+                  value={color}
+                  onChange={handleColorChange}
+                />
+              </form>
             </div>
 
             <div className="col names">
@@ -91,8 +115,10 @@ const MyProfile = () => {
           ></textarea>
         </section>
 
-        <aside className="my_posts">{}</aside>
-        <aside className="my_friends">{}</aside>
+        <aside className="my_posts">
+          <div className="my_posts_feed">{}</div>
+          <Modal />
+        </aside>
       </div>
     </>
   );

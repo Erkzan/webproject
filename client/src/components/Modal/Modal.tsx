@@ -82,9 +82,11 @@ function Modal() {
 
   return (
     <>
-      <div className="button" onClick={handleShow}>
-        +
-      </div>
+      <button className="addPost" onClick={handleShow}>
+        <p className="addPostText">Add Post</p>
+        <div className="button">+</div>
+      </button>
+
       <div className="buttonhover"></div>
       <Modall show={show} onHide={handleClose} size="xl">
         <Modall.Header className="head">
