@@ -46,6 +46,11 @@ function Post(props: { postData: any }) {
   const [dislikes, setDislikes] = useState(0);
   const [shares, setShares] = useState(0);
   const [profilePic, setProfilePic] = useState("");
+  const [refreshTrigger, setRefreshTrigger] = useState(false);
+
+  const refreshStats = () => {
+    setRefreshTrigger(prev => !prev);
+  };
 
   useEffect(() => {
     async function getStats() {
@@ -66,7 +71,7 @@ function Post(props: { postData: any }) {
       setShares(stats.shares);
     }
     getStats();
-  }, []);
+  }, [refreshTrigger]);
 
   useEffect(() => {
     async function getProfilePic() {
@@ -97,7 +102,7 @@ function Post(props: { postData: any }) {
           <button
             className={`col ${classes.interaction} ${classes.like_button}`}
             onClick={async () => {
-              let res = await fetch("http://localhost:8080/posts/addLike", {
+                let response = await fetch("http://localhost:8080/posts/addLike", {
                 method: "POST",
                 mode: "cors",
                 credentials: "include",
@@ -106,14 +111,17 @@ function Post(props: { postData: any }) {
                 },
                 body: JSON.stringify({ id: postData._id }),
               });
-              window.location.reload();
+
+              if (response.ok) {
+                refreshStats();
+              }
             }}
           ></button>
           <div>{likes}</div>
           <button
             className={`col ${classes.interaction} ${classes.dislike_button}`}
             onClick={async () => {
-              await fetch("http://localhost:8080/posts/addDislike", {
+                let response = await fetch("http://localhost:8080/posts/addDislike", {
                 method: "POST",
                 mode: "cors",
                 credentials: "include",
@@ -122,7 +130,10 @@ function Post(props: { postData: any }) {
                 },
                 body: JSON.stringify({ id: postData._id }),
               });
-              window.location.reload();
+
+              if (response.ok) {
+                refreshStats();
+              }
             }}
           ></button>
           <div>{dislikes}</div>
@@ -141,7 +152,7 @@ function Post(props: { postData: any }) {
           <button
             className={`col ${classes.interaction} ${classes.share_button}`}
             onClick={async () => {
-              await fetch("http://localhost:8080/posts/share", {
+                let response = await fetch("http://localhost:8080/posts/share", {
                 method: "POST",
                 mode: "cors",
                 credentials: "include",
@@ -150,7 +161,10 @@ function Post(props: { postData: any }) {
                 },
                 body: JSON.stringify({ id: postData._id }),
               });
-              window.location.reload();
+
+              if (response.ok) {
+                refreshStats();
+              }
             }}
           ></button>
           <div>{shares}</div>

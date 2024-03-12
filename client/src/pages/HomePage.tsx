@@ -102,6 +102,11 @@ const HomePage = () => {
   // Use useState to hold the fetched posts
   const [posts, setPosts] = useState<React.ReactNode[]>([]);
   const [allUsers, setAllUsers] = useState<React.ReactNode[]>([]);
+  const [refreshTrigger, setRefreshTrigger] = useState(false);
+
+  const refreshPosts = () => {
+    setRefreshTrigger(prev => !prev);
+  };
 
   useEffect(() => {
     // Fetch posts when the component mounts
@@ -118,7 +123,7 @@ const HomePage = () => {
     };
 
     fetchUsers();
-  }, []);
+  }, [refreshTrigger]);
 
   return (
     <>
@@ -129,7 +134,7 @@ const HomePage = () => {
           {posts}
         </section>
         <aside className="right">
-          <Modal />
+          <Modal onPostAdded={refreshPosts}/>
           <div className="user-feed">{allUsers}</div>
         </aside>
       </div>

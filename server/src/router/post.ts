@@ -24,11 +24,9 @@ postRouter.post("/addPost", checkLogin, async (req, res) => {
       isComment: false,
       timestamp: Date.now(),
     });
-
-
+    
     await profileModel.findByIdAndUpdate(data?._id, {$push: {posts: newPost._id}});
 
-    
     res.send("Postat");
   } else {
     res.send("fel");
