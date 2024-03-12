@@ -11,7 +11,6 @@ export function checkLogin(req: { cookies: { token: any; }; }, res: { send: (arg
     }
     catch (error) 
     {
-        //res.send(error.message);
         res.send("loginError");
     }
 }
