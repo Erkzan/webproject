@@ -5,7 +5,6 @@ import Comments from "../Comments/Comments";
 import AddC from "../AddComment/AddComment";
 import { ObjectId } from "mongodb";
 
-
 interface CommentsModalProps {
   show: boolean;
   handleClose: () => void;
@@ -44,6 +43,7 @@ const CommentsModal: React.FC<CommentsModalProps> = ({ show, handleClose, postId
   useEffect(() => {
     async function getComments() {
       let data = await getCommentsFromPost(postId);
+      console.log(data);
       setComments(data);
     }
     if (show) {
@@ -51,7 +51,6 @@ const CommentsModal: React.FC<CommentsModalProps> = ({ show, handleClose, postId
     }
   }, [show, postId, refreshCommentsTrigger]);
     
-
 return (
   <>
     <Modall show={show} onHide={handleClose} size="xl">
@@ -70,8 +69,7 @@ return (
             return (
               <Comments 
                 commentData={{
-                  profilePicture: profilePicture,
-                  displayName: displayName,
+                  author: comment.author,
                   text: comment.message,
                   timestamp: comment.timestamp,
                   key: comment._id
