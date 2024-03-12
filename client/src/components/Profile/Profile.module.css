@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.profile_container {
+  display: flex;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  background-color: #eee;
+  width: 100%;
+  padding: 10px;
+}
+
+.profile_pic {
+  border: black solid 1px;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin: 10px auto auto auto;
+}
+
+.profile_info {
+  padding: 10px;
+  max-width: 80%;
+}
+
+.username {
+  color: grey;
+}
+
+.profile p {
+  color: #f8f8f8;
+}
+
+.user {
+  color: black;
+  font-weight: bold;
+  font-family: "Bungee";
+}
+
+.bio{
+  word-wrap: break-word;
+}

@@ -1,0 +1,82 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.post_container{
+    display: inline-flex;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: left;
+    background-color: #f8f8f8;
+}
+
+.timestamp{
+    text-align: center;
+    margin-top: 10px;
+}
+
+.user{
+    font-weight: bold;
+    font-family: 'Bungee';
+    color: #c6bba7;
+}
+
+.interaction{
+    background-color:#f8f8f8;
+    border: none;
+    height: 40px;
+    margin: 0 7%;
+}
+
+.like_button{
+    background: transparent url(picture/like.png) no-repeat center;
+    background-size: 90%;
+}
+
+.like_button:hover{
+    background: transparent url(gif/like.gif) no-repeat center;
+    background-size: 90%;
+}
+
+.dislike_button{
+    background: transparent url(picture/dislike.png) no-repeat center;
+    background-size: 90%;
+}
+
+.dislike_button:hover{
+    background: transparent url(gif/dislike.gif) no-repeat center;
+    background-size: 90%;
+}
+
+.comment_button{
+    background: transparent url(picture/comment.png) no-repeat center;
+    background-size: 90%;
+}
+
+.comment_button:hover{
+    background: transparent url(gif/comment.gif) no-repeat center;
+    background-size: 90%;
+}
+
+.share_button{
+    background: transparent url(picture/share.png) no-repeat center;
+    background-size: 90%;
+}
+
+.share_button:hover{
+    background: transparent url(gif/share.gif) no-repeat center;
+    background-size: 90%;
+}
+
+.save_button{
+    background: transparent url(picture/save.png) no-repeat center;
+    background-size: 90%;
+}
+
+.save_button:hover{
+    background: transparent url(gif/save.gif) no-repeat center;
+    background-size: 90%;
+}

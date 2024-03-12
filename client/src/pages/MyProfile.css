@@ -1,0 +1,134 @@
+.myProfile-page {
+  margin-top: 10vh;
+  padding-top: 10vh;
+  height: 90vh;
+}
+
+.myProfile-container {
+  width: 61%;
+  float: left;
+  margin-left: 3%;
+  margin-right: 3%;
+}
+
+.myProfile-info {
+  height: 50%;
+  margin-bottom: 15px;
+  display: inline-flex;
+  width: 100%;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+}
+
+.my-profile-pic {
+  width: 30%;
+  min-height: 100%;
+  max-width: 30%;
+  background-color: transparent;
+  display:grid ;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.profile-pic-container {
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+  border: none;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  z-index: 10;
+}
+
+.profile-pic-color {
+  width: 200px;
+  height: 200px;
+  margin: 0;
+  border-radius: 50%;
+  padding: 0;
+  border: solid 2px black;
+}
+
+.picker{
+  cursor: pointer;
+  background-color: #adadad;
+  border: none;
+}
+
+.change-color {
+  position: absolute;
+  width: 100;
+  margin: auto;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+
+.profile-pic-container:hover .change-color {
+  opacity: 1;
+}
+
+.names {
+  width: 70%;
+}
+
+.names input {
+  width: 90%;
+  height: 20%;
+  margin: 10% 0;
+  border-radius: 10px;
+  border: none;
+  background-color: #fff;
+  padding-left: 10px;
+}
+
+.bio {
+  height: 35vh;
+  width: 100%;
+  background-color: #f8f8f8;
+  border: none;
+  border-radius: 10px;
+  resize: none;
+  padding: 10px;
+}
+
+.my_posts {
+  top: 10em;
+  width: 30%;
+  margin-right: 3%;
+  height: 90%;
+  overflow: auto;
+}
+
+.my_posts_feed {
+  height: 80%;
+}
+
+.myProfile-page {
+  margin-top: 10vh;
+  padding-top: 10vh;
+}
+
+.save{
+  height: 10%;
+  margin: 0 25%;
+  border-radius: 10px;
+  width: 50%;
+  box-shadow: none;
+  background-color: #333;
+  border: none;
+  font-size: x-large;
+  font-weight: bold;
+  text-align: center;
+  padding: none;
+  color: lightblue;
+}
+
+.save:hover{
+  background-color: rgb(96, 96, 96);
+}

@@ -1,0 +1,65 @@
+.userProfile-page {
+  margin-top: 10vh;
+  padding-top: 10vh;
+  height: 90vh;
+}
+
+.userProfile-container {
+  width: 61%;
+  float: left;
+  margin-left: 3%;
+  margin-right: 3%;
+}
+
+.userProfile-info {
+  height: 50%;
+  margin-bottom: 15px;
+  display: inline-flex;
+  width: 100%;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+}
+
+.user-profile-pic {
+  margin: auto;
+  width: 200px;
+  height: 200px;
+  border: solid black 1px;
+  border-radius: 50%;
+}
+
+.names {
+  width: 70%;
+}
+
+.names input {
+  width: 90%;
+  height: 20%;
+  margin: 10% 0;
+  border-radius: 10px;
+  border: none;
+  background-color: #fff;
+  padding-left: 10px;
+}
+
+.bio {
+  height: 35vh;
+  width: 100%;
+  background-color: #f8f8f8;
+  border: none;
+  border-radius: 10px;
+  resize: none;
+  padding: 10px;
+}
+
+.user_posts {
+  width: 30%;
+  margin-right: 3%;
+  height: calc(50% + 32vh);
+  overflow: auto;
+}
+
+.userProfile-page {
+  margin-top: 10vh;
+  padding-top: 10vh;
+}

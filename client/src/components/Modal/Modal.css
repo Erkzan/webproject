@@ -1,0 +1,91 @@
+.addPost {
+  margin-bottom: 5%;
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  width: 100%;
+  box-shadow: none;
+  background-color: #333;
+  border: none;
+}
+
+.addPostText {
+  font-size: x-large;
+  font-weight: bold;
+  margin: auto 10px;
+  text-align: center;
+  padding: none;
+  color: lightblue;
+}
+
+.button {
+  height: 40px;
+  width: 40px;
+  border: 1px solid lightblue;
+  border-radius: 50%;
+  background-color: transparent;
+  font-size: 55px;
+  font-weight: 10;
+  text-align: center;
+  line-height: 50%;
+  color: lightblue;
+  transition: transform 2s;
+}
+
+.button:hover {
+  transform: rotate(180deg);
+  border: 1.5px solid lightblue;
+}
+
+.head {
+  border: 0;
+}
+
+.headtext {
+  font-weight: bold;
+  font-family: "Bungee";
+  color: #000000;
+  font-size: 200%;
+  margin: auto;
+  margin-top: 5%;
+}
+
+.close,
+.post {
+  margin: 0 10px;
+  height: 30px;
+  width: 130px;
+  border: 1px solid #000000;
+  border-radius: 30px;
+  background-color: rgb(255, 255, 255);
+  font-size: 15px;
+  line-height: 25px;
+  text-align: center;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+}
+
+.close:hover,
+.post:hover {
+  border: 1.5px solid #c3c3c3;
+}
+
+.foot {
+  border: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.text {
+  margin: 0 15%;
+  background-color: rgb(239, 238, 238);
+  width: 70%;
+  height: 200px;
+  border-color: rgb(239, 238, 238);
+  border-radius: 10px;
+  border-width: 10px;
+  font-size: large;
+  color: black;
+}
