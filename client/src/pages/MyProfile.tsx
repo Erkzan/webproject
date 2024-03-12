@@ -18,10 +18,7 @@ async function getData(username: string | undefined) {
 
   let txtResponse = await response.text();
 
-  console.log("txtResponse:" + txtResponse);
   let data = JSON.parse(txtResponse);
-
-  console.log(data);
 
   return data;
 }
@@ -39,8 +36,6 @@ const MyProfile = () => {
     fetchData();
   }, [username]);
 
-  console.log(userData);
-
   const [color, setColor] = useState("#ffffff"); // Initial color
 
   const handleColorChange = async (e: { target: { value: typeof color } }) => {
@@ -56,9 +51,6 @@ const MyProfile = () => {
       body: JSON.stringify({ color: e.target.value }),
     });
   };
-
-  //let myPosts = userData.profile.posts;
-  //let myFriends = userData.profile.friends;
 
   return (
     <>
@@ -79,18 +71,32 @@ const MyProfile = () => {
             </div>
 
             <div className="col names">
-              <input
-                className="row names"
-                type="text"
-                value={userData?.profile.name || ""}
-                placeholder="Name"
-              />
-              <input
-                className="row names"
-                type="text"
-                value={userData?.profile.username || ""}
-                placeholder="Username"
-              />
+            <input
+              className="row names"
+              type="text"
+              value={userData?.profile.name || ""}
+              placeholder="Name"
+              onChange={(e) => setUserData({
+                ...userData,
+                profile: {
+                  ...userData.profile,
+                  name: e.target.value
+                }
+              })}
+            />
+            <input
+              className="row names"
+              type="text"
+              value={userData?.profile.username || ""}
+              placeholder="Username"
+              onChange={(e) => setUserData({
+                ...userData,
+                profile: {
+                  ...userData.profile,
+                  username: e.target.value
+                }
+              })}
+            />
             </div>
           </div>
           <textarea
@@ -99,6 +105,13 @@ const MyProfile = () => {
             id="bio"
             placeholder="Add your bio..."
             value={userData?.profile.bio || ""}
+            onChange={(e) => setUserData({
+              ...userData,
+              profile: {
+                ...userData.profile,
+                bio: e.target.value
+              }
+            })}
           ></textarea>
         </section>
 

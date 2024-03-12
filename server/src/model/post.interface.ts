@@ -3,11 +3,12 @@ import { ObjectId } from "mongodb";
 export interface Post{
     id :  String;
     message : String;
-    image : String; // Temporary
+    image? : String; // Temporary
     author : String;
     authorId : String;
-    likes : Array;
-    dislikes : Array;
-    commentUnder : ObjectId;
-    shares : Array;
+    likes : Array<ObjectId>;
+    dislikes : Array<ObjectId>;
+    commentUnder? : ObjectId;
+    shares : Array<ObjectId>;
+    timestamp : Date;
 } 

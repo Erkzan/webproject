@@ -10,7 +10,6 @@ import { useNavigate } from "react-router-dom";
 import "./Navbar.css";
 
 async function getUsername() {
-  console.log("sending cookie details");
   try {
     const response = await fetch("http://localhost:8080/profile/checkLogin", {
       method: "POST",
@@ -26,7 +25,6 @@ async function getUsername() {
     }
 
     let txtResponse = await response.text();
-    console.log(txtResponse);
     return txtResponse; // Assuming this returns a username if logged in, otherwise an empty string or error
   } catch (error) {
     console.error("Failed to check login status:", error);

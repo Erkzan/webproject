@@ -13,7 +13,7 @@ interface CommentsModalProps {
     let Comment = [];
 
     for(let i = 0; i < 12; i++){
-        Comment.push( <Comments/>)
+        Comment.push( <Comments key={i}/>)
     }
 
   return (

@@ -2,11 +2,11 @@ import express from "express";
 import jwt from "jsonwebtoken";
 import { userpassModel } from "../../db/userpass.db";
 import { profileModel } from "../../db/users.db";
+import { checkLogin } from "../service/middleware";
 
 export const profileRouter = express.Router();
 
 profileRouter.post("/login", async (req, res) => {
-  console.log("loggar in");
   let foundUser = await userpassModel.findOne({
     username: req.body.username,
     password: req.body.password,
@@ -19,8 +19,6 @@ profileRouter.post("/login", async (req, res) => {
       { expiresIn: "1h" }
     );
 
-    console.log("grr före");
-
     res.cookie("token", token, {
       httpOnly: true,
       maxAge: 600 * 1000,
@@ -28,8 +26,6 @@ profileRouter.post("/login", async (req, res) => {
       secure: true,
       //domain: ".localhost:8080"
     });
-
-    console.log("grr efter");
 
     res.send("hejsan");
   } else {
@@ -40,12 +36,8 @@ profileRouter.post("/login", async (req, res) => {
 
 profileRouter.post("/register", async (req, res) => {
   if (!req.body.username || !req.body.password) {
-    console.log(req.body.username);
-    console.log(req.body.password);
     res.send("Failed register");
   } else {
-    console.log(req.body);
-
     let existingUser = await userpassModel.findOne({
       username: req.body.username,
     });
@@ -70,8 +62,6 @@ profileRouter.post("/register", async (req, res) => {
       username: req.body.username,
       name: req.body.displayName,
       email: req.body.email,
-      posts: [],
-      friends: [],
       bio: "",
     });
 
@@ -92,8 +82,6 @@ profileRouter.post("/getProfile", async (req, res) => {
     username: req.body.username,
   });
 
-  console.log("prfile: " + profile);
-
   if (profile) {
     res.send({ profile });
   } else {
@@ -101,17 +89,29 @@ profileRouter.post("/getProfile", async (req, res) => {
   }
 });
 
-profileRouter.post("/changeProfile", async (req, res) => {
-  res.send("JE");
+profileRouter.post("/changeProfilePic", checkLogin, async (req, res) => {
+
+  let token = req.cookies.token;
+  token = jwt.verify(token, "hemlighemlighemlighemlig");
+
+  try {
+    let myProfile = await profileModel.findOne({
+      username: token.username,
+    });
+
+    profileModel.findByIdAndUpdate(myProfile?._id, {$set: {profilePicture: req.body.color}});
+  
+    res.send("ok");
+  }
+  catch (e){
+    res.send("error");
+  }
 });
 
 profileRouter.post("/checkLogin", async (req, res) => {
   try {
-    console.log(req.cookies);
     let token = req.cookies.token;
     token = jwt.verify(token, "hemlighemlighemlighemlig");
-    console.log(token);
-    //req.username = token.username;
     res.send(token.username);
   } catch (error) {
     res.send(null);
@@ -119,7 +119,6 @@ profileRouter.post("/checkLogin", async (req, res) => {
 });
 
 profileRouter.post("/logout", (req, res) => {
-  console.log("logout");
   try {
     res.clearCookie("token");
   } catch {}
@@ -127,11 +126,18 @@ profileRouter.post("/logout", (req, res) => {
 });
 
 profileRouter.post("/getNameById", async (req, res) => {
-  console.log(req.body.id);
-
   let profile = await profileModel.findById(req.body.id);
   if (profile) {
     res.send({ name: profile.name });
+  } else {
+    res.sendStatus(404);
+  }
+});
+
+profileRouter.post("/getPicById", async (req, res) => {
+  let color = await profileModel.findById(req.body.id);
+  if (color) {
+    res.send({ name: color.profilePicture });
   } else {
     res.sendStatus(404);
   }

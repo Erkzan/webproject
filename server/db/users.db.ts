@@ -11,9 +11,9 @@ const profileSchema : Schema = new Schema({
     name : {type : String, required: true},
     email : {type : String, required: true},
     bio : {type : String, required: false},
-    posts : {type : Array, required: true},
-    friends : {type : Array, required: true},
-    profilePicture : {type : String, required: false}
+    posts : {type : Array, default: []},
+    shares : {type : Array, default: []},
+    profilePicture : {type : String, default: "#FFFFFF"}
 });
 
 

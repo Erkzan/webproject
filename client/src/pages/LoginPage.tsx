@@ -13,10 +13,7 @@ function LoginPage() {
   const login = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
-    console.log(loginData);
-
     try {
-      console.log("sending login details");
       const response = await fetch("http://localhost:8080/profile/login", {
         method: "POST",
         mode: "cors",
@@ -30,9 +27,7 @@ function LoginPage() {
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-
-      console.log(await response.text());
-      console.log("registration successful");
+      
       navigate("/MyProfile/" + loginData.username);
       // Handle success response as needed
     } catch (error) {

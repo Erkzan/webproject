@@ -17,7 +17,6 @@ function Modal() {
   };
 
   async function getUsername() {
-    console.log("sending cookie details");
     try {
       const response = await fetch("http://localhost:8080/profile/checkLogin", {
         method: "POST",
@@ -33,7 +32,6 @@ function Modal() {
       }
 
       let txtResponse = await response.text();
-      console.log(txtResponse);
       return txtResponse; // Assuming this returns a username if logged in, otherwise an empty string or error
     } catch (error) {
       console.error("Failed to check login status:", error);
@@ -43,8 +41,6 @@ function Modal() {
 
   const handleSubmit = async () => {
     let user = await getUsername();
-
-    console.log("user: " + user);
 
     if (!user) {
       navigate("/login");
@@ -69,12 +65,9 @@ function Modal() {
         }
 
         let txtData = await response.text();
-        console.log("response ok: " + txtData);
-
         return txtData;
       })
       .then((data) => {
-        console.log("Data received:", data);
         handleClose(); // Close the modal after successful submission
 
         if (data === "loginError") {

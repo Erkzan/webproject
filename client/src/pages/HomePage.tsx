@@ -20,16 +20,15 @@ async function getUsername(_id: any) {
       throw new Error("Network response was not ok");
     }
 
-    let jsonResponse = await response.json(); // Parse the JSON response
-    console.log(jsonResponse);
-    return jsonResponse.name; // Return just the display name
+    let jsonResponse = await response.json();
+
+    return jsonResponse.name;
   } catch (error) {
     console.error("Failed to fetch username:", error);
     return null; // Indicates an error or not logged in
   }
 }
 
-// Assuming getAllPosts remains the same
 async function getAllPosts() {
   let response = await fetch("http://localhost:8080/posts/getAll", {
     method: "POST",
@@ -42,10 +41,7 @@ async function getAllPosts() {
 
   let txtResponse = await response.text();
 
-  console.log("txtResponse:" + txtResponse);
   let data = JSON.parse(txtResponse);
-
-  console.log(data);
 
   let postsPromises = data.map(async (current: any) => {
     let name = await getUsername(current.authorId);
@@ -56,14 +52,14 @@ async function getAllPosts() {
       name: name,
       likes: current.likes,
       dislikes: current.dislikes,
+      timestamp: current.timestamp,
+      _id: current._id,
     };
 
-    return <Post postData={dataC} />;
+    return <Post key={current._id} postData={dataC} />;
   });
 
   let posts = await Promise.all(postsPromises);
-
-  console.log(posts);
 
   return posts;
 }
@@ -95,13 +91,9 @@ async function getAllUsers() {
     throw new Error("Received data is not in JSON format");
   }
 
-  console.log(jsonResponse);
-
   let users = jsonResponse.map((user: any) => {
-    return <Profile key={user.id} userData={user} />;
+    return <Profile key={user._id} userData={user} />;
   });
-
-  console.log(users);
 
   return users;
 }
@@ -115,7 +107,6 @@ const HomePage = () => {
     // Fetch posts when the component mounts
     const fetchPosts = async () => {
       const fetchedPosts = await getAllPosts();
-      console.log(fetchedPosts);
       setPosts(fetchedPosts.reverse()); // Update the state with the fetched posts
     };
 
@@ -123,7 +114,6 @@ const HomePage = () => {
 
     const fetchUsers = async () => {
       const fetchedUsers = await getAllUsers();
-      console.log(fetchedUsers);
       setAllUsers(fetchedUsers);
     };
 
