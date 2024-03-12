@@ -1,50 +1,92 @@
+import React, { useState, useEffect } from "react";
 import Modall from 'react-bootstrap/Modal';
 import "./CommentsModal.css";
 import Comments from "../Comments/Comments";
 import AddC from "../AddComment/AddComment";
+import { ObjectId } from "mongodb";
 
 
 interface CommentsModalProps {
-    show: boolean;
-    handleClose: () => void;
-  }
+  show: boolean;
+  handleClose: () => void;
+  postId: ObjectId;
+  displayName: string;
+  profilePicture: string;
+  postText: string;
+}
   
-  const CommentsModal: React.FC<CommentsModalProps> = ({ show, handleClose }) => {
-    let Comment = [];
+const getCommentsFromPost = async (id: ObjectId) => {
+  let response = await fetch("http://localhost:8080/posts/getComments", {
+    method: "POST",
+    mode: "cors",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ id }),
+  });
 
-    for(let i = 0; i < 12; i++){
-        Comment.push( <Comments key={i}/>)
+  let txtResponse = await response.text();
+
+  let data = JSON.parse(txtResponse);
+
+  return data;
+}
+
+const CommentsModal: React.FC<CommentsModalProps> = ({ show, handleClose, postId, displayName, profilePicture, postText }) => {
+  const [comments, setComments] = useState([]);
+  const [refreshCommentsTrigger, setRefreshCommentsTrigger] = useState(false);
+
+  const refreshComments = () => {
+    setRefreshCommentsTrigger(prev => !prev);
+  };
+
+  useEffect(() => {
+    async function getComments() {
+      let data = await getCommentsFromPost(postId);
+      setComments(data);
     }
+    if (show) {
+      getComments();
+    }
+  }, [show, postId, refreshCommentsTrigger]);
+    
 
-  return (
-    <>
-      <Modall show={show} onHide={handleClose} size="xl">
-        <Modall.Header className="head">
-        </Modall.Header>
-        <Modall.Body>
-                <div className="container">
-                <div className="left-div">
-                    <div className="profile-pic"></div>
-                    <div className="username">Erik Karlsson</div>
-                </div>
-                <div className="right-div">
-                <div className="text"> 
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam, eum
-                    non. Saepe, iure voluptatibus consequatur, quos ex laboriosam fugiat
-                    deserunt similique itaque esse ipsam dolores nisi expedita tempora
-                    architecto quia?
-                </div>
-                </div>
+return (
+  <>
+    <Modall show={show} onHide={handleClose} size="xl">
+      <Modall.Header className="head"/>
+      <Modall.Body>
+        <div className="container">
+          <div className="left-div">
+            <div className="profile-pic" style={{backgroundColor: profilePicture}}></div>
+            <div className="username">{displayName}</div>
+          </div>
+            <div className="right-div">
+              <div className="text">{postText}</div>
             </div>
-              {Comment}
-            <div className="space"></div>
+          </div>
+          {comments.map((comment: any) => {
+            return (
+              <Comments 
+                commentData={{
+                  profilePicture: profilePicture,
+                  displayName: displayName,
+                  text: comment.message,
+                  timestamp: comment.timestamp,
+                  key: comment._id
+                }}
+              />
+            );
+          })}
+          <div className="space"></div>
         </Modall.Body>
         <Modall.Footer className="foots">
           <div className="close" onClick={handleClose}>
             Close
           </div>
           <div>
-            <AddC/>
+            <AddC commentUnder={postId} onCommentAdded={refreshComments}/>
           </div>
         </Modall.Footer>
       </Modall>
@@ -53,5 +95,3 @@ interface CommentsModalProps {
 }
 
 export default CommentsModal;
-
-

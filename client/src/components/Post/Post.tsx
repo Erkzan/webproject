@@ -20,6 +20,24 @@ function Post(props: { postData: any }) {
     }
   }
 
+  async function getData(username: string | undefined) {
+    let response = await fetch("http://localhost:8080/profile/getProfile", {
+      method: "POST",
+      mode: "cors",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username }),
+    });
+  
+    let txtResponse = await response.text();
+  
+    let data = JSON.parse(txtResponse);
+  
+    return data;
+  }
+
   const [show, setShow] = useState(false);
   
   const handleClose = () => setShow(false);
@@ -27,6 +45,7 @@ function Post(props: { postData: any }) {
   const [likes, setLikes] = useState(0);
   const [dislikes, setDislikes] = useState(0);
   const [shares, setShares] = useState(0);
+  const [profilePic, setProfilePic] = useState("");
 
   useEffect(() => {
     async function getStats() {
@@ -49,10 +68,19 @@ function Post(props: { postData: any }) {
     getStats();
   }, []);
 
+  useEffect(() => {
+    async function getProfilePic() {
+      let data = await getData(postData.author);
+      setProfilePic(data.profile.profilePicture);
+    }
+    getProfilePic();
+  }, []);
+    
+
   return (
     <div className={classes.post_container}>
       <div className="col-1">
-        <div className={classes.profile_pic}></div>
+        <div className={classes.profile_pic} style={{ backgroundColor: profilePic }}></div>
         <div className={classes.timestamp}>{timediff + enhet}</div>
       </div>
       <div className={`col ${classes.content_container}`}>
@@ -102,7 +130,14 @@ function Post(props: { postData: any }) {
             onClick={handleShow}
             className={`col ${classes.interaction} ${classes.comment_button}`}
           ></button>
-          <CommentsModal show={show} handleClose={handleClose} />
+          <CommentsModal 
+            show={show} 
+            handleClose={handleClose} 
+            postId={postData._id}
+            displayName={postData.name}
+            profilePicture={profilePic}
+            postText={postData.message}
+          />
           <button
             className={`col ${classes.interaction} ${classes.share_button}`}
             onClick={async () => {

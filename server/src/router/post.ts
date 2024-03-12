@@ -4,7 +4,6 @@ import { postModel } from "../../db/posts.db";
 import { profileModel } from "../../db/users.db";
 import { checkLogin } from "../service/middleware";
 import { PostService } from "../service/post";
-import { ObjectId } from "mongodb";
 import jwt from "jsonwebtoken";
 
 const postService = new PostService();
@@ -26,7 +25,6 @@ postRouter.post("/addPost", checkLogin, async (req, res) => {
       timestamp: Date.now(),
     });
 
-    data.posts.push(newPost._id);
 
     await profileModel.findByIdAndUpdate(data?._id, {$push: {posts: newPost._id}});
 
@@ -38,11 +36,24 @@ postRouter.post("/addPost", checkLogin, async (req, res) => {
 });
 
 postRouter.post("/addComment", checkLogin, async (req, res) => {
-  let data = await commentModel.find({
-    commentUnder: req.body.commentUnder,
+  let data = await profileModel.findOne({
+    username: req.body.username,
   });
 
-  res.send(data);
+  if (data) {
+    await commentModel.create({
+      message: req.body.message,
+      author: data.username,
+      authorId: data._id,
+      timestamp: Date.now(),
+      commentUnder: req.body.commentUnder,
+    });
+
+    
+    res.send("Commentat");
+  } else {
+    res.send("fel");
+  }
 });
 
 postRouter.post("/getAll", async (req, res) => {
@@ -58,7 +69,7 @@ postRouter.post("/getPostById", async (req, res) => {
 
 postRouter.post("/getComments", async (req, res) => {
   let data = await commentModel.find({
-    commentUnder: req.body.commentUnder,
+    commentUnder: req.body.id,
   });
 
   res.send(data);

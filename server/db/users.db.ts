@@ -1,10 +1,6 @@
-import {Schema, Model} from "mongoose";
-
+import { Schema } from "mongoose";
 import { Profile } from "../src/model/profile.interface";
-
 import { conn } from "./conn";
-import { ObjectId } from "mongodb";
-
 
 const profileSchema : Schema = new Schema({
     username : {type : String, required: true},
@@ -15,9 +11,5 @@ const profileSchema : Schema = new Schema({
     shares : {type : Array, default: []},
     profilePicture : {type : String, default: "#FFFFFF"}
 });
-
-
-
-
 
 export const profileModel = conn.model<Profile>("profile", profileSchema);

@@ -100,14 +100,14 @@ async function getAllUsers() {
 
 const HomePage = () => {
   // Use useState to hold the fetched posts
-  const [posts, setPosts] = useState<React.ReactNode[]>([]); // Initialize with an empty array
+  const [posts, setPosts] = useState<React.ReactNode[]>([]);
   const [allUsers, setAllUsers] = useState<React.ReactNode[]>([]);
 
   useEffect(() => {
     // Fetch posts when the component mounts
     const fetchPosts = async () => {
       const fetchedPosts = await getAllPosts();
-      setPosts(fetchedPosts.reverse()); // Update the state with the fetched posts
+      setPosts(fetchedPosts.reverse());
     };
 
     fetchPosts();
@@ -126,7 +126,6 @@ const HomePage = () => {
       <NavBar />
       <div className="page">
         <section className="post-feed">
-          {/* Render posts from state */}
           {posts}
         </section>
         <aside className="right">

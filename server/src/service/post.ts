@@ -1,6 +1,7 @@
 import { ObjectId } from "mongodb";
 import { Post } from "../model/post.interface";
 import { postModel } from "../../db/posts.db";
+import { profileModel } from "../../db/users.db";
 
 export class PostService {
 
