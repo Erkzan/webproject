@@ -32,3 +32,9 @@
 .profile p {
   color: #f8f8f8;
 }
+
+.user {
+  color: black;
+  font-weight: bold;
+  font-family: "Bungee";
+}
