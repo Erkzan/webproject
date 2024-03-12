@@ -31,26 +31,29 @@ const MyProfile = () => {
   useEffect(() => {
     const fetchData = async () => {
       const result = await getData(username);
+      console.log(result);
       setUserData(result);
     };
     fetchData();
-  }, [username]);
+  }, []);
 
-  const [color, setColor] = useState("#ffffff"); // Initial color
 
-  const handleColorChange = async (e: { target: { value: typeof color } }) => {
-    setColor(e.target.value);
-    console.log(e.target.value);
-    await fetch("http://localhost:8080/profile/changeProfilePic", {
+  async function changeProfile(){
+      let res = await fetch("http://localhost:8080/profile/changeProfile", {
       method: "POST",
       mode: "cors",
       credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ color: e.target.value }),
+      body: JSON.stringify(userData.profile),
     });
-  };
+
+    // REMOVE
+    console.log(await res.text());
+    console.log("userData: ");
+    console.log(userData.profile);
+  }
 
   return (
     <>
@@ -64,8 +67,14 @@ const MyProfile = () => {
                 <input
                   className="profile-pic-color"
                   type="color"
-                  value={color}
-                  onChange={handleColorChange}
+                  value={userData?.profile.profilePicture || "#ffffff"}
+                  onChange={(e) => setUserData({
+                    ...userData,
+                    profile: {
+                      ...userData.profile,
+                      profilePicture: e.target.value
+                    }
+                  })}
                 />
               </form>
             </div>
@@ -89,13 +98,7 @@ const MyProfile = () => {
               type="text"
               value={userData?.profile.username || ""}
               placeholder="Username"
-              onChange={(e) => setUserData({
-                ...userData,
-                profile: {
-                  ...userData.profile,
-                  username: e.target.value
-                }
-              })}
+              readOnly
             />
             </div>
           </div>
@@ -113,6 +116,7 @@ const MyProfile = () => {
               }
             })}
           ></textarea>
+          <button onClick={changeProfile} className="save">Save</button>
         </section>
 
         <aside className="my_posts">

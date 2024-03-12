@@ -47,7 +47,6 @@ async function logout() {
       throw new Error("Network response was not ok");
     }
 
-    console.log("Logged out successfully");
     return true;
   } catch (error) {
     console.error("Failed to logout:", error);
@@ -78,7 +77,6 @@ function NavBar() {
         setIsLoggedIn(false);
         setUsername("");
         navigate("/login");
-        console.log("logged out succesfully");
       } else {
         console.log("Could not log out");
       }

@@ -24,7 +24,6 @@ profileRouter.post("/login", async (req, res) => {
       maxAge: 600 * 1000,
       sameSite: "none",
       secure: true,
-      //domain: ".localhost:8080"
     });
 
     res.send("hejsan");
@@ -89,8 +88,8 @@ profileRouter.post("/getProfile", async (req, res) => {
   }
 });
 
-profileRouter.post("/changeProfilePic", checkLogin, async (req, res) => {
-
+profileRouter.post("/changeProfile", checkLogin, async (req, res) => {
+  console.log("Changeing" );
   let token = req.cookies.token;
   token = jwt.verify(token, "hemlighemlighemlighemlig");
 
@@ -99,10 +98,19 @@ profileRouter.post("/changeProfilePic", checkLogin, async (req, res) => {
       username: token.username,
     });
 
-    profileModel.findByIdAndUpdate(myProfile?._id, {$set: {profilePicture: req.body.color}});
+    console.log(req.body);
+
+    console.log(req.body.profilePicture);
+    console.log(myProfile?._id);
+
+    await profileModel.findByIdAndUpdate(myProfile?._id, {
+      profilePicture: req.body.profilePicture,
+      bio: req.body.bio,
+      name: req.body.name
+    });
   
     res.send("ok");
-  }
+  } 
   catch (e){
     res.send("error");
   }
