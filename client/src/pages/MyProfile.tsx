@@ -79,7 +79,7 @@ const MyProfile = () => {
       const postIds = userData.profile.posts;
       setUserPostIds(postIds);
     }
-  }, [userData]);
+  }, [userData, refreshTrigger]);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -91,7 +91,7 @@ const MyProfile = () => {
   
     fetchPosts();
     // Re-render on refreshTrigger changes
-  }, [userPostIds]);
+  }, [userPostIds, refreshTrigger]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -102,7 +102,7 @@ const MyProfile = () => {
   }, [refreshTrigger]);
 
   async function changeProfile(){
-      await fetch("http://localhost:8080/profile/changeProfile", {
+      let response = await fetch("http://localhost:8080/profile/changeProfile", {
       method: "POST",
       mode: "cors",
       credentials: "include",
@@ -111,6 +111,11 @@ const MyProfile = () => {
       },
       body: JSON.stringify(userData.profile),
     });
+
+    if (response.ok) {
+      refreshPosts();
+      window.location.reload();
+    }
   }
 
   return (

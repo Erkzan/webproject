@@ -45,7 +45,7 @@ function Post(props: { postData: any }) {
   const [likes, setLikes] = useState(0);
   const [dislikes, setDislikes] = useState(0);
   const [shares, setShares] = useState(0);
-  const [profilePic, setProfilePic] = useState("");
+  const [profilePicture, setProfilePic] = useState("");
   const [refreshTrigger, setRefreshTrigger] = useState(false);
 
   const refreshStats = () => {
@@ -84,7 +84,7 @@ function Post(props: { postData: any }) {
   return (
     <div className={classes.post_container}>
       <div className="col-1">
-        <div className={classes.profile_pic} style={{ backgroundColor: profilePic }}></div>
+        <div className={classes.profile_pic} style={{ backgroundColor: profilePicture }}></div>
         <div className={classes.timestamp}>{timediff + enhet}</div>
       </div>
       <div className={`col ${classes.content_container}`}>
@@ -145,7 +145,7 @@ function Post(props: { postData: any }) {
             handleClose={handleClose} 
             postId={postData._id}
             displayName={postData.name}
-            profilePicture={profilePic}
+            profilePicture={profilePicture}
             postText={postData.message}
           />
           <button
