@@ -55,7 +55,7 @@ async function getPost(id: ObjectId) {
       _id: post._id,
     };
 
-    return <Post postData={dataC} />;
+    return <Post key={post._id} postData={dataC} />;
   } catch (error) {
     console.error('Error parsing JSON from getPostById:', error);
     return;
@@ -91,7 +91,7 @@ const MyProfile = () => {
   
     fetchPosts();
     // Re-render on refreshTrigger changes
-  }, [userPostIds, refreshTrigger]);
+  }, [userPostIds]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -99,7 +99,7 @@ const MyProfile = () => {
       setUserData(result);
     };
     fetchData();
-  }, []);
+  }, [refreshTrigger]);
 
   async function changeProfile(){
       await fetch("http://localhost:8080/profile/changeProfile", {
