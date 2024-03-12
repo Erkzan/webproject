@@ -1,3 +1,11 @@
+.addCommentContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5%;
+}
+
 .Cbutton {
     margin: 0 10px; 
     height: 30px;
@@ -41,10 +49,9 @@
     color: rgb(0, 0, 0);
 }
 
-.Cclose:hover , .post:Chover{
+.Cclose:hover , .Cpost:hover{
     border: 1.5px solid #c3c3c3; 
 }
-
 
 .Cfoot{
     border: 0;
@@ -76,6 +83,8 @@
     float: left;
     margin-right: 0%;
 }
+
+
 
 
 

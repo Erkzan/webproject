@@ -84,15 +84,15 @@ function AddComment(props: { commentUnder: ObjectId; onCommentAdded: () => void;
 
   return (
     <>
-      <div className="Cbutton" onClick={handleShow}>
+      <button className="Cbutton" onClick={handleShow}>
         Add Comment
-      </div>
+      </button>
       <div className="Cbuttonhover"></div>
       <Modall show={show} onHide={handleClose} size="xl">
         <Modall.Header className="Chead">
           <Modall.Title className="Cheadtext">Add Comment</Modall.Title>
         </Modall.Header>
-        <Modall.Body>
+        <Modall.Body className="addCommentContainer">
           <textarea 
             className="Ctext" 
             placeholder="Write..."
@@ -101,12 +101,12 @@ function AddComment(props: { commentUnder: ObjectId; onCommentAdded: () => void;
             ></textarea>
         </Modall.Body>
         <Modall.Footer className="Cfoot">
-          <div className="Cclose" onClick={handleClose}>
+          <button className="Cclose" onClick={handleClose}>
             Close
-          </div>
-          <div className="Cpost" onClick={addComment}>
+          </button>
+          <button className="Cpost" onClick={addComment}>
             Add Comment
-          </div>
+          </button>
         </Modall.Footer>
       </Modall>
     </>

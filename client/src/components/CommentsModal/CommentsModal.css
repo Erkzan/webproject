@@ -15,30 +15,30 @@
 
 .container {
     display: flex;
+    
 }
 
-
 .left-div {
-    width: 15%;
+    width: 20%;
     background-color: #ffffff; 
     padding: 10px;
     height: 20em;
     display: flex;
-    margin-left: 5em;
+    margin-left: 3em;
     flex-direction: column; 
     justify-content: center; 
     align-items: center; 
 }
 
 .right-div {
-    width: 80%;
+    width: 70%;
     background-color: rgb(255, 255, 255);
     padding: 10px;
     height: 20em;
     display: flex;
     flex-direction: column; 
-    justify-content: end;
-    align-items: left; 
+    justify-content: center;
+    align-items: center; 
 }
 
 .username{
@@ -49,6 +49,8 @@
 
 .text{
     padding: 1em;
+    word-wrap: break-word;
+    margin-left: 0em;
 }
 
 .profile-pic{
@@ -60,15 +62,15 @@
 }
 
 .foots {
-    position: fixed;
     bottom: 0;
-    width: calc(100% - 20.98%);
+    width: 100%;
     background-color: white;
     padding: 15px; 
     border-top: 1px solid #ccc; 
     border: 0;
     display: flex; 
-    justify-content: center; 
+    justify-content: center;
+    align-items: center;
 }  
 
 .space{

@@ -126,7 +126,7 @@ const MyProfile = () => {
             <div className="col my-profile-pic">
               <div className="profile-pic-color" style={{backgroundColor: userData?.profile.profilePicture}}></div>
               <div className="color-picker">
-                <p>Change color: <input className="picker" type="color" style={{backgroundColor: userData?.profile.profilePicture}} value={userData?.profile.profilePicture || "#ffffff"}
+                <p>Change color: <input className="picker" type="color" value={userData?.profile.profilePicture || "#ffffff"}
                   onChange={(e) => setUserData({
                     ...userData,
                     profile: {
