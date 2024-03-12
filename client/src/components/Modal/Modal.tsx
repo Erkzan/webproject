@@ -3,11 +3,11 @@ import Modall from "react-bootstrap/Modal";
 import { useNavigate } from "react-router-dom";
 import "./Modal.css";
 
-function Modal() {
+function Modal(props: { onPostAdded: () => void; }){
   const [show, setShow] = useState(false);
   const [text, setText] = useState("");
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {setShow(false); setText("")};
   const handleShow = () => setShow(true);
 
   const navigate = useNavigate();
@@ -29,7 +29,7 @@ function Modal() {
 
       if (!response.ok) {
         throw new Error("Network response was not ok");
-      }
+      } 
 
       let txtResponse = await response.text();
       return txtResponse; // Assuming this returns a username if logged in, otherwise an empty string or error
@@ -62,6 +62,8 @@ function Modal() {
       .then(async (response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
+        } else {
+          props.onPostAdded();
         }
 
         let txtData = await response.text();
@@ -77,7 +79,6 @@ function Modal() {
       .catch((error) => {
         console.error("There was a problem with your fetch operation:", error);
       });
-    window.location.reload();
   };
 
   return (

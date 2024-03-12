@@ -70,6 +70,11 @@ const MyProfile = () => {
   const [userData, setUserData] = useState<any>(null);
   const [userPostIds, setUserPostIds] = useState<any>([]);
   const [userPosts, setUserPosts] = useState<any>([]);
+  const [refreshTrigger, setRefreshTrigger] = useState(false);
+
+  const refreshPosts = () => {
+    setRefreshTrigger(prev => !prev);
+  };
   
   useEffect(() => {
     if (userData) {
@@ -87,7 +92,7 @@ const MyProfile = () => {
     };
   
     fetchPosts();
-  }, [userPostIds]);
+  }, [userPostIds, refreshTrigger]);
 
 
   useEffect(() => {
@@ -173,7 +178,7 @@ const MyProfile = () => {
         </section>
 
         <aside className="my_posts">
-          <Modal />
+          <Modal onPostAdded={refreshPosts} />
           <div className="my_posts_feed">{userPosts}</div>
         </aside>
       </div>
