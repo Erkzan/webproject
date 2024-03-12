@@ -54,6 +54,8 @@ async function getAllPosts() {
       message: current.message,
       author: current.author,
       name: name,
+      likes: current.likes,
+      dislikes: current.dislikes,
     };
 
     return <Post postData={dataC} />;
@@ -130,6 +132,7 @@ const HomePage = () => {
 
   return (
     <>
+    <title>Welcome to Y</title>
       <NavBar />
       <div className="page">
         <section className="post-feed">

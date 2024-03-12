@@ -6,7 +6,7 @@ import classes from "./Post.module.css";
 function Post(props: { postData: any }) {
   const { postData } = props;
 
-  console.log(postData);
+  console.log("Post:" + JSON.stringify(postData));
 
   const [show, setShow] = useState(false);
 
@@ -32,6 +32,7 @@ function Post(props: { postData: any }) {
         <footer className="">
           <button
             className={`col ${classes.interaction} ${classes.like_button}`}
+            
           ></button>
           <button
             className={`col ${classes.interaction} ${classes.dislike_button}`}

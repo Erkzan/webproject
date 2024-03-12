@@ -2,10 +2,8 @@ import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import express from "express";
-import path from "path";
 import { postRouter } from "./router/post";
 import { profileRouter } from "./router/profile";
-import { testRouter } from "./router/routTest";
 
 // import {  } from "./router/...";
 
@@ -33,4 +31,3 @@ app.use((req, res, next) => {
 
 app.use("/posts", postRouter);
 app.use("/profile", profileRouter);
-app.use("/test", testRouter);

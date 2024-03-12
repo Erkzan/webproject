@@ -1,38 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-
-// Pages
-import Friends from "./pages/Friends";
-import HomePage from "./pages/HomePage";
-import MyProfile from "./pages/MyProfile";
-import RegisterPage from "./pages/RegisterPage";
-import Search from "./pages/Search";
-import UserProfile from "./pages/UserProfile";
-import LoginPage from "./pages/LoginPage";
+import App from "./App";
 
 // CSS
 import "./index.css";
 
-const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement
-);
+
+
+const rootElement = document.getElementById("root");
+if (!rootElement) throw new Error('Failed to find the root element');
+const root = ReactDOM.createRoot(rootElement as HTMLElement);
+
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route index element={<HomePage />} />
-        <Route path="/" element={<HomePage />} />
-        <Route path="/MyProfile/:username" element={<MyProfile />} />
-        <Route path="/search" element={<Search />} />
-        <Route path="/friends" element={<Friends />} />
-        <Route path="/UserProfile/:username" element={<UserProfile />} />
-
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/login" element={<LoginPage />} />
-
-        <Route path="/*" element={<HomePage />} />
-      </Routes>
-    </BrowserRouter>
+    <App />
   </React.StrictMode>
 );
+

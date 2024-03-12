@@ -6,11 +6,28 @@ export class PostService {
     private posts : Post[] = [];
 
     async getPosts() : Promise<Post[]> {
-        return this.posts;
+        //return this.posts;
+
+        return await postModel.find();
     } 
 
-    addPost(newPost: Post) : void {
-        this.posts.push(newPost);
+    async addPost(newPost: Post) : Promise<ObjectId> {
+        //this.posts.push(newPost);
+
+        const createdPost = await postModel.create(newPost);
+        return createdPost._id;
+    }
+
+    async getPostsByAuthorId(authorId: ObjectId) : Promise<Post[]> {
+        //return this.posts.filter(post => post.authorId === authorId);
+        
+        return await postModel.find({authorId: authorId});
+    }
+
+    async getPostById(postId: ObjectId) : Promise<Post | null> {
+        //return this.posts.find(post => post._id === postId);
+        
+        return await postModel.findById(postId);
     }
 
     async addLike(postId: ObjectId, myId: ObjectId){
@@ -71,13 +88,23 @@ export class PostService {
     }
 
     async like(postId: ObjectId, myId: ObjectId){
-        await this.removeDislike(postId, myId);
-        await this.addLike(postId, myId);
+        try {
+            await this.removeDislike(postId, myId);
+            await this.addLike(postId, myId);
+        } catch (error) {
+            return false;
+        }
+        return true;
     }
 
     async dislike(postId: ObjectId, myId: ObjectId){
-        await this.removeLike(postId, myId);
-        await this.addDislike(postId, myId);
+        try {
+            await this.removeLike(postId, myId);
+            await this.addDislike(postId, myId);
+        } catch (error) {
+            return false;
+        }
+        return true;
     }
     
 }

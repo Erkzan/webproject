@@ -46,6 +46,7 @@ const MyProfile = () => {
   return (
     <>
       <NavBar />
+      <title>My profile</title>
       <div className="myProfile-page">
         <section className="myProfile-container">
           <div className="myProfile-info">

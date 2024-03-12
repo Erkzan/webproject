@@ -15,6 +15,7 @@ const Friends = () => {
     return (
         <>
             <NavBar/>
+            <title>Friends</title>  
             <header></header>
             <div className="page">
                 <div className="row">

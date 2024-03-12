@@ -130,7 +130,7 @@ function NavBar() {
             {isLoggedIn ? (
               <>
                 <div className="btn-group link">
-                  <Nav.Link className="link" href={"/UserProfile/" + username}>
+                  <Nav.Link className="link" href={"/MyProfile/" + username}>
                     My Profile
                   </Nav.Link>
                   <Dropdown>
