@@ -13,7 +13,8 @@ const postData = {
   authorId: new mongoose.Types.ObjectId(), 
   likes: [],
   dislikes: [],
-  shares: []
+  shares: [],
+  timestamp: Date.now(),
 };
 
 // Connect to the in-memory database
@@ -64,9 +65,14 @@ describe('Post Creation and Retrieval', () => {
       expect(error).toBeNull();
     }
 
-    // Check that the retrieved post matches the original post
+    // Check that the retrieved post matches the original post except timestamp
     expect(retrievedPost).not.toBeNull();
-    expect(retrievedPost).toMatchObject(postData);
+    expect(retrievedPost.message).toEqual(postData.message);
+    expect(retrievedPost.author).toEqual(postData.author);
+    expect(retrievedPost.authorId).toEqual(postData.authorId);
+    expect(retrievedPost.likes).toEqual(postData.likes);
+    expect(retrievedPost.dislikes).toEqual(postData.dislikes);
+    expect(retrievedPost.shares).toEqual(postData.shares);
   });
 });
 
