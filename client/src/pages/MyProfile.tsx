@@ -119,23 +119,17 @@ const MyProfile = () => {
         <section className="myProfile-container">
           <div className="myProfile-info">
             <div className="col my-profile-pic">
-              <div className="profile-pic-color"></div>
-              <input type="color" value={"Change color"} />
-              <p>Change Color</p>
-              {/*<form className="profile-pic-container" action="/action_page.php">
-                <input
-                  className="profile-pic-color"
-                  type="color"
-                  value={userData?.profile.profilePicture || "#ffffff"}
+              <div className="profile-pic-color" style={{backgroundColor: userData?.profile.profilePicture}}></div>
+              <div className="color-picker">
+                <p>Change color: <input className="picker" type="color" style={{backgroundColor: userData?.profile.profilePicture}} value={userData?.profile.profilePicture || "#ffffff"}
                   onChange={(e) => setUserData({
                     ...userData,
                     profile: {
                       ...userData.profile,
                       profilePicture: e.target.value
                     }
-                  })}
-                />
-                </form>*/}
+                  })} /></p>
+              </div>
             </div>
 
             <div className="col names">
