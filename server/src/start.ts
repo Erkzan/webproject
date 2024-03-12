@@ -5,11 +5,8 @@ import express from "express";
 import { postRouter } from "./router/post";
 import { profileRouter } from "./router/profile";
 
-// import {  } from "./router/...";
-
 export const app = express();
 require("dotenv").config();
-
 
 app.use(express.json());
 app.use(cookieParser());

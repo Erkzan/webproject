@@ -29,7 +29,6 @@ function LoginPage() {
       }
       
       navigate("/MyProfile/" + loginData.username);
-      // Handle success response as needed
     } catch (error) {
       console.error("Error posting data:", error);
     }
@@ -43,9 +42,8 @@ function LoginPage() {
     }));
   };
 
-  // Function to navigate to the register page
   const goToRegister = () => {
-    navigate("/register"); // Update "/register" to your registration page's route
+    navigate("/register"); 
   };
 
   return (
@@ -53,7 +51,6 @@ function LoginPage() {
       <title>Login</title>
       <h1 className={classes.welcome_header}>Welcome!</h1>
       <p className={classes.login_header}>Login to your account</p>
-
       <div className={classes.login_page}>
         <form onSubmit={login}>
           <h3 className={classes.username_header}>Username</h3>

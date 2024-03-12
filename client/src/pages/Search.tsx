@@ -21,17 +21,14 @@ async function getSearch(search: String) {
 
   let txtResponse = await response.text();
 
-  console.log(txtResponse);
-  // Check if txtResponse is not empty
   if (!txtResponse) {
     console.error("Response from getPostById is empty");
-    return null; // Optionally, return a default value or handle the error as needed
+    return null;
   }
 
   let profiles = JSON.parse(txtResponse);
 
-  console.log(profiles);
-  return profiles; //an array of profiles
+  return profiles;
 }
 
 const Search = () => {

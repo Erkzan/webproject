@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import classes from "./Profile.module.css";
 
-
 async function getData(username: string | undefined) {
   let response = await fetch("http://localhost:8080/profile/getProfile", {
     method: "POST",

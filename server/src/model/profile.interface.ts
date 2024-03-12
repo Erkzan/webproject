@@ -9,4 +9,3 @@ export interface Profile {
   profilePicture: String; // Temporary
   shares: ObjectId[];
 }
- 
