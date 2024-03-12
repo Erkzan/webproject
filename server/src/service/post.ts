@@ -3,30 +3,21 @@ import { Post } from "../model/post.interface";
 import { postModel } from "../../db/posts.db";
 
 export class PostService {
-    private posts : Post[] = [];
 
     async getPosts() : Promise<Post[]> {
-        //return this.posts;
-
-        return await postModel.find();
+       return await postModel.find();
     } 
 
     async addPost(newPost: Post) : Promise<ObjectId> {
-        //this.posts.push(newPost);
-
         const createdPost = await postModel.create(newPost);
         return createdPost._id;
     }
 
     async getPostsByAuthorId(authorId: ObjectId) : Promise<Post[]> {
-        //return this.posts.filter(post => post.authorId === authorId);
-        
-        return await postModel.find({authorId: authorId});
+       return await postModel.find({authorId: authorId});
     }
 
     async getPostById(postId: ObjectId) : Promise<Post | null> {
-        //return this.posts.find(post => post._id === postId);
-        
         return await postModel.findById(postId);
     }
 

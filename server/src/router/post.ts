@@ -28,9 +28,8 @@ postRouter.post("/addPost", checkLogin, async (req, res) => {
 
     data.posts.push(newPost._id);
 
-    await profileModel.findByIdAndUpdate(data._id, {
-      posts: data.posts,
-    });
+    await profileModel.findByIdAndUpdate(data?._id, {$push: {posts: newPost._id}});
+
     
     res.send("Postat");
   } else {

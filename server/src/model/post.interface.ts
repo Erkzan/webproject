@@ -6,9 +6,9 @@ export interface Post{
     image? : String; // Temporary
     author : String;
     authorId : String;
-    likes : Array<ObjectId>;
-    dislikes : Array<ObjectId>;
+    likes : ObjectId[];
+    dislikes : ObjectId[];
     commentUnder? : ObjectId;
-    shares : Array<ObjectId>;
+    shares : ObjectId[];
     timestamp : Date;
 } 
