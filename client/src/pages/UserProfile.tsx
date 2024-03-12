@@ -101,13 +101,17 @@ const UserProfile = () => {
         <section className="myProfile-container">
           <div className="myProfile-info">
             <div className="col my-profile-pic">
-              <form className="profile-pic-container" action="/action_page.php">
+              <div
+                className="user-profile-pic"
+                style={{ backgroundColor: userData?.profile.profilePicture }}
+              ></div>
+              {/*<form className="profile-pic-container" action="/action_page.php">
                 <input
                   className="profile-pic-color"
                   type="color"
                   value={userData?.profile.profilePicture || "#ffffff"}
                 />
-              </form>
+              </form> */}
             </div>
 
             <div className="col names">
