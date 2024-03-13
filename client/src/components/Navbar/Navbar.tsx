@@ -99,7 +99,7 @@ function NavBar() {
   return (
     <Navbar expand="lg" className="navbar">
       <Container>
-        <Navbar.Brand className="nav-brand">Welcome to Y</Navbar.Brand>
+        <Navbar.Brand className="nav-brand" href="/">Welcome to Y</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">

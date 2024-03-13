@@ -75,7 +75,7 @@
 .foot {
   border: 0;
   display: flex;
-  justify-content: center;
+  justify-content: center !important;
 }
 
 .text {
