@@ -56,6 +56,11 @@
   color: #eee;
 }
 
+#basic-navbar-nav {
+  background-color: #333;
+  width: 100%;
+}
+
 .box_search:hover p {
   opacity: 0;
   z-index: -1;

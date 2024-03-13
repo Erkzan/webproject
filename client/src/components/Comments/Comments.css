@@ -1,59 +1,60 @@
 .containers {
-    display: flex;
+  display: flex;
 }
 
 .left-divs {
-    width: 10%;
-    background-color: #ffffff; 
-    height: flex;
-    display: flex;
-    margin-left: 15em;
-    margin-right: 0em;
-    margin-top: 3%;
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: center; 
+  width: 10%;
+  background-color: #ffffff;
+  height: flex;
+  display: flex;
+  margin-left: 15em;
+  margin-right: 0em;
+  margin-top: 3%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .right-divs {
-    width: 40%;
-    background-color: rgb(255, 255, 255);
-    height: flex;
-    display: flex;
-    margin-left: 0em;
-    margin-top: 1em;
-    flex-direction: column; 
-    justify-content: end;
-    align-items: left; 
-    padding-bottom: 1%;
-    border-bottom: 0.5px solid black;
+  width: 40%;
+  background-color: rgb(255, 255, 255);
+  height: flex;
+  display: flex;
+  margin-left: 0em;
+  margin-top: 1em;
+  flex-direction: column;
+  justify-content: end;
+  align-items: left;
+  padding-bottom: 1%;
+  border-bottom: 0.5px solid black;
 }
 
-.usernames{
-    font-size: small;
-    margin-top: 1em;
-    margin-left: 0;
+.usernames {
+  font-size: small;
+  margin-top: 1em;
+  margin-left: 0;
 }
 
-.texts{
-    margin: auto;
-    background-color: rgb(231, 231, 231);
-    width: 100%;
-    height: flex;
-    border-radius: 10px;
-    border-width: 10px;
-    margin-left: 0%;
-    font-size: small;
-    color: black;
-    padding: 1em;
-    text-align: left;
+.texts {
+  margin: auto;
+  background-color: rgb(231, 231, 231);
+  width: 100%;
+  height: flex;
+  border-radius: 10px;
+  border-width: 10px;
+  margin-left: 0%;
+  font-size: small;
+  color: black;
+  padding: 1em;
+  text-align: left;
+  word-wrap: break-word;
 }
 
-.profile-pics{
-    border: solid 1px black;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    margin-left: center;
-    margin-top: 0%;
+.profile-pics {
+  border: solid 1px black;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  margin-left: center;
+  margin-top: 0%;
 }

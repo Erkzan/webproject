@@ -3,11 +3,14 @@ import Modall from "react-bootstrap/Modal";
 import { useNavigate } from "react-router-dom";
 import "./Modal.css";
 
-function Modal(props: { onPostAdded: () => void; }){
+function Modal(props: { onPostAdded: () => void }) {
   const [show, setShow] = useState(false);
   const [text, setText] = useState("");
 
-  const handleClose = () => {setShow(false); setText("")};
+  const handleClose = () => {
+    setShow(false);
+    setText("");
+  };
   const handleShow = () => setShow(true);
 
   const navigate = useNavigate();
@@ -29,7 +32,7 @@ function Modal(props: { onPostAdded: () => void; }){
 
       if (!response.ok) {
         throw new Error("Network response was not ok");
-      } 
+      }
 
       let txtResponse = await response.text();
       return txtResponse;
@@ -92,7 +95,7 @@ function Modal(props: { onPostAdded: () => void; }){
         <Modall.Header className="head">
           <Modall.Title className="headtext">New Post</Modall.Title>
         </Modall.Header>
-        <Modall.Body>
+        <Modall.Body className="addText">
           <textarea
             className="text"
             placeholder="Write..."

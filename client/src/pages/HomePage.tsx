@@ -105,7 +105,7 @@ const HomePage = () => {
   const [refreshTrigger, setRefreshTrigger] = useState(false);
 
   const refreshPosts = () => {
-    setRefreshTrigger(prev => !prev);
+    setRefreshTrigger((prev) => !prev);
   };
 
   useEffect(() => {
@@ -131,11 +131,9 @@ const HomePage = () => {
       <title>Welcome to Y</title>
       <NavBar />
       <div className="page">
-        <section className="post-feed">
-          {posts}
-        </section>
+        <section className="post-feed">{posts}</section>
         <aside className="right">
-          <Modal onPostAdded={refreshPosts}/>
+          <Modal onPostAdded={refreshPosts} />
           <div className="user-feed">{allUsers}</div>
         </aside>
       </div>

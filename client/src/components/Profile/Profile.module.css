@@ -37,9 +37,8 @@
 .user {
   color: black;
   font-weight: bold;
-  font-family: "Bungee";
 }
 
-.bio{
+.bio {
   word-wrap: break-word;
 }
